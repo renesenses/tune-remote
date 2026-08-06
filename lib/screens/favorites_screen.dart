@@ -6,6 +6,8 @@ import '../api/tune_client.dart';
 import '../l10n/app_localizations.dart';
 import '../state/app_state.dart';
 import '../widgets/media_card.dart';
+import '../widgets/quality_badge.dart';
+import '../widgets/quality_filter_bar.dart';
 import '../widgets/responsive.dart';
 import '../widgets/track_tile.dart';
 import 'album_detail.dart';
@@ -32,6 +34,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   bool _loading = false;
   String? _loadedSig; // signature of authenticated services last loaded
   int _favSeen = -1; // last seen AppState.favVersion
+  Set<QualityTier> _tierFilter = {}; // empty = show every quality
 
   /// Identifies the current set of usable services (host + authenticated names).
   /// Changes whenever a service logs in/out, so favorites reload on auth.
@@ -126,6 +129,43 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   String _srcLabel(String s) =>
       s == 'local' ? AppL.of(context).sourceLibrary : s.toUpperCase();
 
+  /// Tracks tab: quality filter chips + "play what you see", then the list.
+  Widget _tracksTab(List<Track> all) {
+    final shown = QualityFilterBar.apply(all, _tierFilter);
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: QualityFilterBar(
+                tracks: all,
+                selected: _tierFilter,
+                onChanged: (s) => setState(() => _tierFilter = s),
+              ),
+            ),
+            // Plays exactly the filtered list, in the order shown.
+            Padding(
+              padding: const EdgeInsets.only(right: 12),
+              child: IconButton.filled(
+                tooltip: AppL.of(context).playAll,
+                icon: const Icon(Icons.play_arrow),
+                onPressed: shown.isEmpty
+                    ? null
+                    : () => context.read<AppState>().playTracks(shown),
+              ),
+            ),
+          ],
+        ),
+        Expanded(
+          child: ListView(
+            padding: const EdgeInsets.only(bottom: 24),
+            children: [for (final tr in shown) TrackTile(track: tr)],
+          ),
+        ),
+      ],
+    );
+  }
+
   /// One source's favorites, split into Artists / Albums / Tracks tabs.
   Widget _sourceFavorites(_Favorites f) {
     final t = AppL.of(context);
@@ -189,10 +229,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 tab(
                   f.tracks.isEmpty,
                   t.noFavTracks,
-                  ListView(
-                    padding: const EdgeInsets.only(bottom: 24),
-                    children: [for (final tr in f.tracks) TrackTile(track: tr)],
-                  ),
+                  _tracksTab(f.tracks),
                 ),
               ],
             ),
