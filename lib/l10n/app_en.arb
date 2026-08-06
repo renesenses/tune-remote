@@ -4,14 +4,18 @@
   "navPlaylists": "Playlists",
   "navFavorites": "Favorites",
   "navSettings": "Settings",
-
   "loading": "Loading…",
   "errorWith": "Error: {msg}",
-  "@errorWith": { "placeholders": { "msg": { "type": "String" } } },
+  "@errorWith": {
+    "placeholders": {
+      "msg": {
+        "type": "String"
+      }
+    }
+  },
   "notConnected": "Set up the server in Settings",
   "playAll": "Play all",
   "noTracks": "No tracks",
-
   "searchTitle": "Search",
   "searchHint": "Title, album, artist…",
   "filterAll": "All",
@@ -23,16 +27,26 @@
   "sectionPlaylists": "Playlists",
   "sectionTracks": "Tracks",
   "sourceLibrary": "Library",
-
   "playlistsTitle": "Playlists",
   "dynamicPlaylists": "Dynamic playlists",
   "dynamicTag": "Dynamic",
   "tracksCount": "{n} tracks",
-  "@tracksCount": { "placeholders": { "n": { "type": "int" } } },
+  "@tracksCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "maxTracks": "max {n}",
-  "@maxTracks": { "placeholders": { "n": { "type": "int" } } },
+  "@maxTracks": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "noPlaylists": "No playlist",
-
   "favoritesTitle": "Favorites",
   "tabArtists": "Artists",
   "tabAlbums": "Albums",
@@ -40,7 +54,6 @@
   "noFavArtists": "No favorite artist",
   "noFavAlbums": "No favorite album",
   "noFavTracks": "No favorite track",
-
   "settingsTitle": "Settings",
   "server": "Server",
   "host": "Host",
@@ -67,19 +80,21 @@
   "streamingServices": "Streaming services",
   "language": "Language",
   "systemLanguage": "System",
-
   "nothingPlaying": "Nothing playing",
   "visualizer": "Visualizer",
   "cover": "Cover",
-
   "addFavorite": "Add to favorites",
   "removeFavorite": "Remove from favorites",
   "favError": "Favorite failed: {msg}",
-  "@favError": { "placeholders": { "msg": { "type": "String" } } },
-
+  "@favError": {
+    "placeholders": {
+      "msg": {
+        "type": "String"
+      }
+    }
+  },
   "metadataTitle": "Metadata fields",
   "metadataSaved": "Metadata saved",
-
   "localLibrary": "Local library",
   "localLibraryDesc": "Folders the server scans for music",
   "musicFolders": "Scanned folders",
@@ -89,7 +104,6 @@
   "scanning": "Scanning…",
   "pickFolder": "Choose a folder",
   "addThisFolder": "Add this folder",
-
   "createPlaylist": "Create a playlist",
   "playlistName": "Playlist name",
   "create": "Create",
@@ -103,18 +117,33 @@
   "playlistDeleted": "Playlist deleted",
   "trackRemoved": "Removed from playlist",
   "removeFromPlaylist": "Remove from playlist",
-
   "logIn": "Log in",
   "logOut": "Log out",
   "username": "Username",
   "password": "Password",
   "cancel": "Cancel",
-
   "noService": "No service",
   "loginTo": "Sign in to {service}",
-  "@loginTo": { "placeholders": { "service": { "type": "String" } } },
+  "@loginTo": {
+    "placeholders": {
+      "service": {
+        "type": "String"
+      }
+    }
+  },
   "authorizeInBrowser": "Authorize access in your browser:",
   "openAuthPage": "Open the authorization page",
   "done": "I'm done",
-  "disabled": "Disabled"
+  "disabled": "Disabled",
+  "navHome": "Home",
+  "listeningActivity": "Listening activity",
+  "mostPlayed": "Most played",
+  "playsCount": "{n,plural, =0{no plays}=1{1 play}other{{n} plays}}",
+  "@playsCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  }
 }

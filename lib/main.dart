@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'l10n/app_localizations.dart';
 import 'state/app_state.dart';
 import 'theme/tune_theme.dart';
+import 'screens/home_screen.dart';
 import 'screens/search_screen.dart';
 import 'screens/playlists_screen.dart';
 import 'screens/favorites_screen.dart';
@@ -49,6 +50,7 @@ class _HomeScaffoldState extends State<HomeScaffold> {
   int _index = 0;
 
   static const _screens = [
+    HomeScreen(),
     SearchScreen(),
     PlaylistsScreen(),
     FavoritesScreen(),
@@ -56,6 +58,7 @@ class _HomeScaffoldState extends State<HomeScaffold> {
   ];
 
   static const _icons = [
+    (icon: Icons.home_outlined, selected: Icons.home),
     (icon: Icons.search, selected: Icons.search),
     (icon: Icons.queue_music, selected: Icons.queue_music),
     (icon: Icons.favorite_border, selected: Icons.favorite),
@@ -68,7 +71,13 @@ class _HomeScaffoldState extends State<HomeScaffold> {
   Widget build(BuildContext context) {
     final wide = Breakpoints.isWide(context);
     final t = AppL.of(context);
-    final labels = [t.navSearch, t.navPlaylists, t.navFavorites, t.navSettings];
+    final labels = [
+      t.navHome,
+      t.navSearch,
+      t.navPlaylists,
+      t.navFavorites,
+      t.navSettings
+    ];
     final stack = IndexedStack(index: _index, children: _screens);
 
     return Scaffold(

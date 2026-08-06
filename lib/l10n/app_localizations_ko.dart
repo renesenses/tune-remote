@@ -318,4 +318,23 @@ class AppLKo extends AppL {
 
   @override
   String get disabled => '비활성화됨';
+
+  @override
+  String get navHome => '홈';
+
+  @override
+  String get listeningActivity => '청취 활동';
+
+  @override
+  String get mostPlayed => '많이 재생';
+
+  @override
+  String playsCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n회 재생',
+    );
+    return '$_temp0';
+  }
 }

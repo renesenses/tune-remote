@@ -320,4 +320,25 @@ class AppLEn extends AppL {
 
   @override
   String get disabled => 'Disabled';
+
+  @override
+  String get navHome => 'Home';
+
+  @override
+  String get listeningActivity => 'Listening activity';
+
+  @override
+  String get mostPlayed => 'Most played';
+
+  @override
+  String playsCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n plays',
+      one: '1 play',
+      zero: 'no plays',
+    );
+    return '$_temp0';
+  }
 }

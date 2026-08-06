@@ -376,3 +376,123 @@ class MetadataCategory {
             .toList(),
       );
 }
+
+/// Library counters shown on the home dashboard (`GET /library/stats`).
+class LibraryStats {
+  final int albums;
+  final int artists;
+  final int tracks;
+  final int zones;
+
+  LibraryStats({
+    this.albums = 0,
+    this.artists = 0,
+    this.tracks = 0,
+    this.zones = 0,
+  });
+
+  static int _i(dynamic v) => (v as num?)?.toInt() ?? 0;
+
+  factory LibraryStats.fromJson(Map<String, dynamic> j) => LibraryStats(
+        albums: _i(j['albums']),
+        artists: _i(j['artists']),
+        tracks: _i(j['tracks']),
+        zones: _i(j['zones']),
+      );
+}
+
+/// One day of listening activity (`trend` in `GET /history/dashboard`).
+class ListeningDay {
+  final DateTime day;
+  final int plays;
+  final int listeningMs;
+
+  ListeningDay({required this.day, this.plays = 0, this.listeningMs = 0});
+}
+
+/// A frequently played track (`top_tracks` in `GET /history/dashboard`).
+/// Its shape differs from [Track] — it carries play counts, not audio fields.
+class PlayedTrack {
+  final String title;
+  final String? artistName;
+  final String? coverPath;
+  final int plays;
+
+  PlayedTrack({
+    required this.title,
+    this.artistName,
+    this.coverPath,
+    this.plays = 0,
+  });
+
+  factory PlayedTrack.fromJson(Map<String, dynamic> j) => PlayedTrack(
+        title: _s(j['title']),
+        artistName: j['artist_name'] as String?,
+        coverPath: j['cover_path'] as String?,
+        plays: (j['plays'] as num?)?.toInt() ?? 0,
+      );
+}
+
+/// Listening summary over a period (`GET /history/dashboard`).
+class ListeningDashboard {
+  final int plays;
+  final int listeningMs;
+  final int uniqueTracks;
+  final int uniqueArtists;
+
+  /// Daily activity, **gap-filled**: the API only returns days that had plays,
+  /// so silent days are added back as zeroes — otherwise a chart would draw a
+  /// compressed timeline and misrepresent the period.
+  final List<ListeningDay> trend;
+  final List<PlayedTrack> topTracks;
+
+  ListeningDashboard({
+    this.plays = 0,
+    this.listeningMs = 0,
+    this.uniqueTracks = 0,
+    this.uniqueArtists = 0,
+    this.trend = const [],
+    this.topTracks = const [],
+  });
+
+  factory ListeningDashboard.fromJson(Map<String, dynamic> j) {
+    final totals = (j['totals'] as Map?)?.cast<String, dynamic>() ?? const {};
+    int n(dynamic v) => (v as num?)?.toInt() ?? 0;
+
+    // Raw days, keyed by date, then filled across the whole range.
+    final byDay = <DateTime, ListeningDay>{};
+    for (final e in (j['trend'] as List? ?? const [])) {
+      if (e is! Map) continue;
+      final parsed = DateTime.tryParse('${e['day']}');
+      if (parsed == null) continue;
+      final d = DateTime(parsed.year, parsed.month, parsed.day);
+      byDay[d] = ListeningDay(
+        day: d,
+        plays: n(e['plays']),
+        listeningMs: n(e['listening_ms']),
+      );
+    }
+
+    final trend = <ListeningDay>[];
+    if (byDay.isNotEmpty) {
+      final days = byDay.keys.toList()..sort();
+      for (var d = days.first;
+          !d.isAfter(days.last);
+          d = DateTime(d.year, d.month, d.day + 1)) {
+        trend.add(byDay[d] ?? ListeningDay(day: d));
+      }
+    }
+
+    return ListeningDashboard(
+      plays: n(totals['plays']),
+      listeningMs: n(totals['listening_ms']),
+      uniqueTracks: n(totals['unique_tracks']),
+      uniqueArtists: n(totals['unique_artists']),
+      trend: trend,
+      topTracks: (j['top_tracks'] as List? ?? const [])
+          .whereType<Map<String, dynamic>>()
+          .map(PlayedTrack.fromJson)
+          .toList(),
+    );
+  }
+}

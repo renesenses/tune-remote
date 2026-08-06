@@ -708,6 +708,30 @@ abstract class AppL {
   /// In en, this message translates to:
   /// **'Disabled'**
   String get disabled;
+
+  /// No description provided for @navHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get navHome;
+
+  /// No description provided for @listeningActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Listening activity'**
+  String get listeningActivity;
+
+  /// No description provided for @mostPlayed.
+  ///
+  /// In en, this message translates to:
+  /// **'Most played'**
+  String get mostPlayed;
+
+  /// No description provided for @playsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{n,plural, =0{no plays}=1{1 play}other{{n} plays}}'**
+  String playsCount(int n);
 }
 
 class _AppLDelegate extends LocalizationsDelegate<AppL> {

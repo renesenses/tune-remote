@@ -4,13 +4,11 @@
   "navPlaylists": "Playlists",
   "navFavorites": "Favoris",
   "navSettings": "Paramètres",
-
   "loading": "Chargement…",
   "errorWith": "Erreur : {msg}",
   "notConnected": "Configure le serveur dans Paramètres",
   "playAll": "Tout lire",
   "noTracks": "Aucune piste",
-
   "searchTitle": "Recherche",
   "searchHint": "Titre, album, artiste…",
   "filterAll": "Tout",
@@ -22,14 +20,12 @@
   "sectionPlaylists": "Playlists",
   "sectionTracks": "Titres",
   "sourceLibrary": "Bibliothèque",
-
   "playlistsTitle": "Playlists",
   "dynamicPlaylists": "Playlists dynamiques",
   "dynamicTag": "Dynamique",
   "tracksCount": "{n} pistes",
   "maxTracks": "max {n}",
   "noPlaylists": "Aucune playlist",
-
   "favoritesTitle": "Favoris",
   "tabArtists": "Artistes",
   "tabAlbums": "Albums",
@@ -37,7 +33,6 @@
   "noFavArtists": "Aucun artiste favori",
   "noFavAlbums": "Aucun album favori",
   "noFavTracks": "Aucun titre favori",
-
   "settingsTitle": "Paramètres",
   "server": "Serveur",
   "host": "Hôte",
@@ -64,18 +59,14 @@
   "streamingServices": "Services de streaming",
   "language": "Langue",
   "systemLanguage": "Système",
-
   "nothingPlaying": "Rien en lecture",
   "visualizer": "Visualiseur",
   "cover": "Pochette",
-
   "addFavorite": "Ajouter aux favoris",
   "removeFavorite": "Retirer des favoris",
   "favError": "Échec favori : {msg}",
-
   "metadataTitle": "Champs de métadonnées",
   "metadataSaved": "Métadonnées enregistrées",
-
   "localLibrary": "Bibliothèque locale",
   "localLibraryDesc": "Dossiers où le serveur cherche la musique",
   "musicFolders": "Dossiers scannés",
@@ -85,7 +76,6 @@
   "scanning": "Scan en cours…",
   "pickFolder": "Choisir un dossier",
   "addThisFolder": "Ajouter ce dossier",
-
   "createPlaylist": "Créer une playlist",
   "playlistName": "Nom de la playlist",
   "create": "Créer",
@@ -99,17 +89,19 @@
   "playlistDeleted": "Playlist supprimée",
   "trackRemoved": "Retiré de la playlist",
   "removeFromPlaylist": "Retirer de la playlist",
-
   "logIn": "Se connecter",
   "logOut": "Se déconnecter",
   "username": "Identifiant / email",
   "password": "Mot de passe",
   "cancel": "Annuler",
-
   "noService": "Aucun service",
   "loginTo": "Connexion {service}",
   "authorizeInBrowser": "Autorise l'accès dans ton navigateur :",
   "openAuthPage": "Ouvrir la page d'autorisation",
   "done": "J'ai terminé",
-  "disabled": "Désactivé"
+  "disabled": "Désactivé",
+  "navHome": "Accueil",
+  "listeningActivity": "Écoute récente",
+  "mostPlayed": "Les plus écoutés",
+  "playsCount": "{n,plural, =0{aucune écoute}=1{1 écoute}other{{n} écoutes}}"
 }

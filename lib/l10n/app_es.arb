@@ -4,13 +4,11 @@
   "navPlaylists": "Listas",
   "navFavorites": "Favoritos",
   "navSettings": "Ajustes",
-
   "loading": "Cargando…",
   "errorWith": "Error: {msg}",
   "notConnected": "Configura el servidor en Ajustes",
   "playAll": "Reproducir todo",
   "noTracks": "Sin pistas",
-
   "searchTitle": "Buscar",
   "searchHint": "Título, álbum, artista…",
   "filterAll": "Todo",
@@ -22,14 +20,12 @@
   "sectionPlaylists": "Listas",
   "sectionTracks": "Pistas",
   "sourceLibrary": "Biblioteca",
-
   "playlistsTitle": "Listas",
   "dynamicPlaylists": "Listas dinámicas",
   "dynamicTag": "Dinámica",
   "tracksCount": "{n} pistas",
   "maxTracks": "máx. {n}",
   "noPlaylists": "Ninguna lista",
-
   "favoritesTitle": "Favoritos",
   "tabArtists": "Artistas",
   "tabAlbums": "Álbumes",
@@ -37,7 +33,6 @@
   "noFavArtists": "Sin artistas favoritos",
   "noFavAlbums": "Sin álbumes favoritos",
   "noFavTracks": "Sin pistas favoritas",
-
   "settingsTitle": "Ajustes",
   "server": "Servidor",
   "host": "Host",
@@ -64,18 +59,14 @@
   "streamingServices": "Servicios de streaming",
   "language": "Idioma",
   "systemLanguage": "Sistema",
-
   "nothingPlaying": "Nada en reproducción",
   "visualizer": "Visualizador",
   "cover": "Carátula",
-
   "addFavorite": "Añadir a favoritos",
   "removeFavorite": "Quitar de favoritos",
   "favError": "Error de favorito: {msg}",
-
   "metadataTitle": "Campos de metadatos",
   "metadataSaved": "Metadatos guardados",
-
   "localLibrary": "Biblioteca local",
   "localLibraryDesc": "Carpetas donde el servidor busca música",
   "musicFolders": "Carpetas escaneadas",
@@ -85,7 +76,6 @@
   "scanning": "Escaneando…",
   "pickFolder": "Elegir una carpeta",
   "addThisFolder": "Añadir esta carpeta",
-
   "createPlaylist": "Crear una lista",
   "playlistName": "Nombre de la lista",
   "create": "Crear",
@@ -99,17 +89,19 @@
   "playlistDeleted": "Lista eliminada",
   "trackRemoved": "Quitado de la lista",
   "removeFromPlaylist": "Quitar de la lista",
-
   "logIn": "Iniciar sesión",
   "logOut": "Cerrar sesión",
   "username": "Usuario",
   "password": "Contraseña",
   "cancel": "Cancelar",
-
   "noService": "Ningún servicio",
   "loginTo": "Iniciar sesión en {service}",
   "authorizeInBrowser": "Autoriza el acceso en tu navegador:",
   "openAuthPage": "Abrir la página de autorización",
   "done": "He terminado",
-  "disabled": "Desactivado"
+  "disabled": "Desactivado",
+  "navHome": "Inicio",
+  "listeningActivity": "Actividad de escucha",
+  "mostPlayed": "Más escuchados",
+  "playsCount": "{n,plural, =0{sin reproducciones}=1{1 reproducción}other{{n} reproducciones}}"
 }

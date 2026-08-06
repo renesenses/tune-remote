@@ -321,4 +321,25 @@ class AppLDe extends AppL {
 
   @override
   String get disabled => 'Deaktiviert';
+
+  @override
+  String get navHome => 'Start';
+
+  @override
+  String get listeningActivity => 'Höraktivität';
+
+  @override
+  String get mostPlayed => 'Meistgehört';
+
+  @override
+  String playsCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n Wiedergaben',
+      one: '1 Wiedergabe',
+      zero: 'keine Wiedergaben',
+    );
+    return '$_temp0';
+  }
 }

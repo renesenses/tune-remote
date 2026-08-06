@@ -317,4 +317,23 @@ class AppLZh extends AppL {
 
   @override
   String get disabled => '已禁用';
+
+  @override
+  String get navHome => '主页';
+
+  @override
+  String get listeningActivity => '收听活动';
+
+  @override
+  String get mostPlayed => '最常播放';
+
+  @override
+  String playsCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n 次播放',
+    );
+    return '$_temp0';
+  }
 }

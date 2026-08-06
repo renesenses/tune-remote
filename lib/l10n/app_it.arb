@@ -4,13 +4,11 @@
   "navPlaylists": "Playlist",
   "navFavorites": "Preferiti",
   "navSettings": "Impostazioni",
-
   "loading": "Caricamento…",
   "errorWith": "Errore: {msg}",
   "notConnected": "Configura il server nelle Impostazioni",
   "playAll": "Riproduci tutto",
   "noTracks": "Nessun brano",
-
   "searchTitle": "Cerca",
   "searchHint": "Titolo, album, artista…",
   "filterAll": "Tutto",
@@ -22,14 +20,12 @@
   "sectionPlaylists": "Playlist",
   "sectionTracks": "Brani",
   "sourceLibrary": "Libreria",
-
   "playlistsTitle": "Playlist",
   "dynamicPlaylists": "Playlist dinamiche",
   "dynamicTag": "Dinamica",
   "tracksCount": "{n} brani",
   "maxTracks": "max {n}",
   "noPlaylists": "Nessuna playlist",
-
   "favoritesTitle": "Preferiti",
   "tabArtists": "Artisti",
   "tabAlbums": "Album",
@@ -37,7 +33,6 @@
   "noFavArtists": "Nessun artista preferito",
   "noFavAlbums": "Nessun album preferito",
   "noFavTracks": "Nessun brano preferito",
-
   "settingsTitle": "Impostazioni",
   "server": "Server",
   "host": "Host",
@@ -64,18 +59,14 @@
   "streamingServices": "Servizi di streaming",
   "language": "Lingua",
   "systemLanguage": "Sistema",
-
   "nothingPlaying": "Niente in riproduzione",
   "visualizer": "Visualizzatore",
   "cover": "Copertina",
-
   "addFavorite": "Aggiungi ai preferiti",
   "removeFavorite": "Rimuovi dai preferiti",
   "favError": "Preferito non riuscito: {msg}",
-
   "metadataTitle": "Campi metadati",
   "metadataSaved": "Metadati salvati",
-
   "localLibrary": "Libreria locale",
   "localLibraryDesc": "Cartelle in cui il server cerca la musica",
   "musicFolders": "Cartelle scansionate",
@@ -85,7 +76,6 @@
   "scanning": "Scansione…",
   "pickFolder": "Scegli una cartella",
   "addThisFolder": "Aggiungi questa cartella",
-
   "createPlaylist": "Crea una playlist",
   "playlistName": "Nome della playlist",
   "create": "Crea",
@@ -99,17 +89,19 @@
   "playlistDeleted": "Playlist eliminata",
   "trackRemoved": "Rimosso dalla playlist",
   "removeFromPlaylist": "Rimuovi dalla playlist",
-
   "logIn": "Accedi",
   "logOut": "Disconnetti",
   "username": "Nome utente",
   "password": "Password",
   "cancel": "Annulla",
-
   "noService": "Nessun servizio",
   "loginTo": "Accedi a {service}",
   "authorizeInBrowser": "Autorizza l'accesso nel browser:",
   "openAuthPage": "Apri la pagina di autorizzazione",
   "done": "Ho finito",
-  "disabled": "Disattivato"
+  "disabled": "Disattivato",
+  "navHome": "Home",
+  "listeningActivity": "Attività di ascolto",
+  "mostPlayed": "Più ascoltati",
+  "playsCount": "{n,plural, =0{nessun ascolto}=1{1 ascolto}other{{n} ascolti}}"
 }

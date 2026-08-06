@@ -483,6 +483,22 @@ class TuneClient {
     }
   }
 
+  // ── Home dashboard ─────────────────────────────────────────────────
+
+  /// Library counters (albums / artists / tracks / zones).
+  Future<LibraryStats> libraryStats() async => LibraryStats.fromJson(
+      (await _get('/library/stats')) as Map<String, dynamic>);
+
+  /// Listening summary for [period] ("7d", "30d", "1y"…), with the daily trend
+  /// and the most played tracks.
+  Future<ListeningDashboard> listeningDashboard({
+    String period = '30d',
+    int topN = 6,
+  }) async =>
+      ListeningDashboard.fromJson(
+          (await _get('/history/dashboard?period=$period&top_n=$topN'))
+              as Map<String, dynamic>);
+
   void close() => _http.close();
 }
 
