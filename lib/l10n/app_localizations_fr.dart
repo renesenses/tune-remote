@@ -321,4 +321,25 @@ class AppLFr extends AppL {
 
   @override
   String get disabled => 'Désactivé';
+
+  @override
+  String get navHome => 'Accueil';
+
+  @override
+  String get listeningActivity => 'Écoute récente';
+
+  @override
+  String get mostPlayed => 'Les plus écoutés';
+
+  @override
+  String playsCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n écoutes',
+      one: '1 écoute',
+      zero: 'aucune écoute',
+    );
+    return '$_temp0';
+  }
 }

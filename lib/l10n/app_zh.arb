@@ -4,13 +4,11 @@
   "navPlaylists": "播放列表",
   "navFavorites": "收藏",
   "navSettings": "设置",
-
   "loading": "加载中…",
   "errorWith": "错误：{msg}",
   "notConnected": "请在设置中配置服务器",
   "playAll": "全部播放",
   "noTracks": "没有曲目",
-
   "searchTitle": "搜索",
   "searchHint": "标题、专辑、艺人…",
   "filterAll": "全部",
@@ -22,14 +20,12 @@
   "sectionPlaylists": "播放列表",
   "sectionTracks": "曲目",
   "sourceLibrary": "音乐库",
-
   "playlistsTitle": "播放列表",
   "dynamicPlaylists": "动态播放列表",
   "dynamicTag": "动态",
   "tracksCount": "{n} 首",
   "maxTracks": "最多 {n}",
   "noPlaylists": "没有播放列表",
-
   "favoritesTitle": "收藏",
   "tabArtists": "艺人",
   "tabAlbums": "专辑",
@@ -37,7 +33,6 @@
   "noFavArtists": "没有收藏的艺人",
   "noFavAlbums": "没有收藏的专辑",
   "noFavTracks": "没有收藏的曲目",
-
   "settingsTitle": "设置",
   "server": "服务器",
   "host": "主机",
@@ -64,18 +59,14 @@
   "streamingServices": "流媒体服务",
   "language": "语言",
   "systemLanguage": "系统",
-
   "nothingPlaying": "没有在播放",
   "visualizer": "可视化",
   "cover": "封面",
-
   "addFavorite": "加入收藏",
   "removeFavorite": "取消收藏",
   "favError": "收藏失败：{msg}",
-
   "metadataTitle": "元数据字段",
   "metadataSaved": "元数据已保存",
-
   "localLibrary": "本地音乐库",
   "localLibraryDesc": "服务器扫描音乐的文件夹",
   "musicFolders": "已扫描的文件夹",
@@ -85,7 +76,6 @@
   "scanning": "扫描中…",
   "pickFolder": "选择文件夹",
   "addThisFolder": "添加此文件夹",
-
   "createPlaylist": "创建播放列表",
   "playlistName": "播放列表名称",
   "create": "创建",
@@ -99,17 +89,19 @@
   "playlistDeleted": "播放列表已删除",
   "trackRemoved": "已从播放列表移除",
   "removeFromPlaylist": "从播放列表移除",
-
   "logIn": "登录",
   "logOut": "登出",
   "username": "用户名",
   "password": "密码",
   "cancel": "取消",
-
   "noService": "无服务",
   "loginTo": "登录 {service}",
   "authorizeInBrowser": "在浏览器中授权访问：",
   "openAuthPage": "打开授权页面",
   "done": "我已完成",
-  "disabled": "已禁用"
+  "disabled": "已禁用",
+  "navHome": "主页",
+  "listeningActivity": "收听活动",
+  "mostPlayed": "最常播放",
+  "playsCount": "{n,plural, other{{n} 次播放}}"
 }

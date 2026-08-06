@@ -318,4 +318,23 @@ class AppLJa extends AppL {
 
   @override
   String get disabled => '無効';
+
+  @override
+  String get navHome => 'ホーム';
+
+  @override
+  String get listeningActivity => '再生アクティビティ';
+
+  @override
+  String get mostPlayed => 'よく再生';
+
+  @override
+  String playsCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n 回再生',
+    );
+    return '$_temp0';
+  }
 }

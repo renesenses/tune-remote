@@ -4,13 +4,11 @@
   "navPlaylists": "プレイリスト",
   "navFavorites": "お気に入り",
   "navSettings": "設定",
-
   "loading": "読み込み中…",
   "errorWith": "エラー: {msg}",
   "notConnected": "設定でサーバーを構成してください",
   "playAll": "すべて再生",
   "noTracks": "トラックなし",
-
   "searchTitle": "検索",
   "searchHint": "タイトル、アルバム、アーティスト…",
   "filterAll": "すべて",
@@ -22,14 +20,12 @@
   "sectionPlaylists": "プレイリスト",
   "sectionTracks": "トラック",
   "sourceLibrary": "ライブラリ",
-
   "playlistsTitle": "プレイリスト",
   "dynamicPlaylists": "ダイナミックプレイリスト",
   "dynamicTag": "ダイナミック",
   "tracksCount": "{n} 曲",
   "maxTracks": "最大 {n}",
   "noPlaylists": "プレイリストなし",
-
   "favoritesTitle": "お気に入り",
   "tabArtists": "アーティスト",
   "tabAlbums": "アルバム",
@@ -37,7 +33,6 @@
   "noFavArtists": "お気に入りのアーティストなし",
   "noFavAlbums": "お気に入りのアルバムなし",
   "noFavTracks": "お気に入りのトラックなし",
-
   "settingsTitle": "設定",
   "server": "サーバー",
   "host": "ホスト",
@@ -64,18 +59,14 @@
   "streamingServices": "ストリーミングサービス",
   "language": "言語",
   "systemLanguage": "システム",
-
   "nothingPlaying": "再生していません",
   "visualizer": "ビジュアライザー",
   "cover": "ジャケット",
-
   "addFavorite": "お気に入りに追加",
   "removeFavorite": "お気に入りから削除",
   "favError": "お気に入りに失敗: {msg}",
-
   "metadataTitle": "メタデータ項目",
   "metadataSaved": "メタデータを保存しました",
-
   "localLibrary": "ローカルライブラリ",
   "localLibraryDesc": "サーバーが音楽を探すフォルダ",
   "musicFolders": "スキャン対象フォルダ",
@@ -85,7 +76,6 @@
   "scanning": "スキャン中…",
   "pickFolder": "フォルダを選択",
   "addThisFolder": "このフォルダを追加",
-
   "createPlaylist": "プレイリストを作成",
   "playlistName": "プレイリスト名",
   "create": "作成",
@@ -99,17 +89,19 @@
   "playlistDeleted": "プレイリストを削除しました",
   "trackRemoved": "プレイリストから削除しました",
   "removeFromPlaylist": "プレイリストから削除",
-
   "logIn": "ログイン",
   "logOut": "ログアウト",
   "username": "ユーザー名",
   "password": "パスワード",
   "cancel": "キャンセル",
-
   "noService": "サービスなし",
   "loginTo": "{service} にログイン",
   "authorizeInBrowser": "ブラウザでアクセスを許可してください：",
   "openAuthPage": "認証ページを開く",
   "done": "完了しました",
-  "disabled": "無効"
+  "disabled": "無効",
+  "navHome": "ホーム",
+  "listeningActivity": "再生アクティビティ",
+  "mostPlayed": "よく再生",
+  "playsCount": "{n,plural, other{{n} 回再生}}"
 }

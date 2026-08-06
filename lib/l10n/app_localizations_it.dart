@@ -320,4 +320,25 @@ class AppLIt extends AppL {
 
   @override
   String get disabled => 'Disattivato';
+
+  @override
+  String get navHome => 'Home';
+
+  @override
+  String get listeningActivity => 'Attività di ascolto';
+
+  @override
+  String get mostPlayed => 'Più ascoltati';
+
+  @override
+  String playsCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n ascolti',
+      one: '1 ascolto',
+      zero: 'nessun ascolto',
+    );
+    return '$_temp0';
+  }
 }

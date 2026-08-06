@@ -321,4 +321,25 @@ class AppLEs extends AppL {
 
   @override
   String get disabled => 'Desactivado';
+
+  @override
+  String get navHome => 'Inicio';
+
+  @override
+  String get listeningActivity => 'Actividad de escucha';
+
+  @override
+  String get mostPlayed => 'Más escuchados';
+
+  @override
+  String playsCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n reproducciones',
+      one: '1 reproducción',
+      zero: 'sin reproducciones',
+    );
+    return '$_temp0';
+  }
 }
