@@ -81,10 +81,20 @@ class _TracksDetailScreenState extends State<TracksDetailScreen> {
     }
   }
 
-  Future<void> _removeTrack(int index, Track track) async {
+  /// Removes [track] from the playlist.
+  ///
+  /// The server deletes a local playlist entry by **position**, so the position
+  /// is resolved here from the authoritative list at the moment of the action
+  /// (`Track` has no `==` override, so `indexOf` matches the exact instance).
+  /// Deriving it — rather than passing an index captured when the row was built
+  /// — is what makes this correct while a quality filter is hiding rows, and
+  /// keeps it correct if the list is ever reordered or refreshed under us.
+  Future<void> _removeTrack(Track track) async {
     final messenger = ScaffoldMessenger.of(context);
     final t = AppL.of(context);
-    setState(() => _tracks = List.of(_tracks!)..remove(track));
+    final index = _tracks!.indexOf(track);
+    if (index < 0) return; // already gone (double tap, concurrent refresh)
+    setState(() => _tracks = List.of(_tracks!)..removeAt(index));
     try {
       await widget.onRemoveTrack!(index, track);
       messenger.showSnackBar(SnackBar(content: Text(t.trackRemoved)));
@@ -125,19 +135,11 @@ class _TracksDetailScreenState extends State<TracksDetailScreen> {
   Widget build(BuildContext context) {
     final tracks = _tracks;
     final t = AppL.of(context);
-    // Positions (in the full list) of the tracks passing the quality filter.
-    // Keeping the original indices matters: `onRemoveTrack` sends the index to
-    // the server as the playlist position, so a filtered index would delete the
-    // wrong track.
-    final shownIdx = tracks == null
-        ? const <int>[]
-        : [
-            for (var i = 0; i < tracks.length; i++)
-              if (_tierFilter.isEmpty ||
-                  _tierFilter.contains(qualityTierOf(tracks[i].quality)))
-                i,
-          ];
-    final shown = [for (final i in shownIdx) tracks![i]];
+    // The tracks passing the quality filter. Row callbacks work off this list
+    // alone: playback plays what is visible, and removal resolves its own
+    // position from the full list (see _removeTrack).
+    final shown =
+        tracks == null ? const <Track>[] : QualityFilterBar.apply(tracks, _tierFilter);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title, overflow: TextOverflow.ellipsis),
@@ -209,15 +211,13 @@ class _TracksDetailScreenState extends State<TracksDetailScreen> {
                         child: Center(child: Text(t.noTracks)),
                       )
                     else
-                      for (var vi = 0; vi < shownIdx.length; vi++)
+                      for (var vi = 0; vi < shown.length; vi++)
                         TrackTile(
                           track: shown[vi],
-                          // Start from the visible position within the visible
-                          // list; removal keeps the original index.
                           onTap: () => _playList(shown, vi),
                           onRemove: widget.onRemoveTrack == null
                               ? null
-                              : () => _removeTrack(shownIdx[vi], shown[vi]),
+                              : () => _removeTrack(shown[vi]),
                         ),
                     const SizedBox(height: 24),
                   ],
