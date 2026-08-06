@@ -37,16 +37,16 @@ extension QualityTierStyle on QualityTier {
       };
 
   Color get background => switch (this) {
-        QualityTier.dsd => TuneTokens.badge_dsd,
-        QualityTier.hires => TuneTokens.badge_hr,
-        QualityTier.cd => TuneTokens.badge_cd,
+        QualityTier.dsd => TuneTokens.badgeDsd,
+        QualityTier.hires => TuneTokens.badgeHr,
+        QualityTier.cd => TuneTokens.badgeCd,
         QualityTier.lossy => TuneTokens.surface2,
       };
 
   Color get foreground => switch (this) {
-        QualityTier.dsd => TuneTokens.badge_onBadgeDark,
-        QualityTier.hires => TuneTokens.badge_onBadge,
-        QualityTier.cd => TuneTokens.badge_onBadge,
+        QualityTier.dsd => TuneTokens.badgeOnBadgeDark,
+        QualityTier.hires => TuneTokens.badgeOnBadge,
+        QualityTier.cd => TuneTokens.badgeOnBadge,
         QualityTier.lossy => TuneTokens.muted,
       };
 }

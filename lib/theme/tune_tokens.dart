@@ -17,28 +17,28 @@ abstract final class TuneTokens {
   static const Color accent2 = Color(0xFFFF7A52);  // rgb(255,122,82)
   static const Color onAccent = Color(0xFF0B0B0D);  // rgb(11,11,13)
   // badge
-  static const Color badge_cd = Color(0xFF4FA96A);  // rgb(79,169,106)
-  static const Color badge_hr = Color(0xFFD9A63A);  // rgb(217,166,58)
-  static const Color badge_dsd = Color(0xFFC9782F);  // rgb(201,120,47)
-  static const Color badge_explicit = Color(0xFF8A8580);  // rgb(138,133,128)
-  static const Color badge_onBadge = Color(0xFF0B0B0D);  // rgb(11,11,13)
-  static const Color badge_onBadgeDark = Color(0xFFFFFFFF);  // rgb(255,255,255)
+  static const Color badgeCd = Color(0xFF4FA96A);  // rgb(79,169,106)
+  static const Color badgeHr = Color(0xFFD9A63A);  // rgb(217,166,58)
+  static const Color badgeDsd = Color(0xFFC9782F);  // rgb(201,120,47)
+  static const Color badgeExplicit = Color(0xFF8A8580);  // rgb(138,133,128)
+  static const Color badgeOnBadge = Color(0xFF0B0B0D);  // rgb(11,11,13)
+  static const Color badgeOnBadgeDark = Color(0xFFFFFFFF);  // rgb(255,255,255)
   // semantic
-  static const Color semantic_good = Color(0xFF4FA96A);  // rgb(79,169,106)
-  static const Color semantic_warn = Color(0xFFD9A63A);  // rgb(217,166,58)
-  static const Color semantic_critical = Color(0xFFE5484D);  // rgb(229,72,77)
+  static const Color semanticGood = Color(0xFF4FA96A);  // rgb(79,169,106)
+  static const Color semanticWarn = Color(0xFFD9A63A);  // rgb(217,166,58)
+  static const Color semanticCritical = Color(0xFFE5484D);  // rgb(229,72,77)
   // radius
-  static const double radius_sm = 6.0;
-  static const double radius_md = 10.0;
-  static const double radius_lg = 14.0;
-  static const double radius_pill = 999.0;
+  static const double radiusSm = 6.0;
+  static const double radiusMd = 10.0;
+  static const double radiusLg = 14.0;
+  static const double radiusPill = 999.0;
   // space
-  static const double space_xs = 4.0;
-  static const double space_sm = 8.0;
-  static const double space_md = 12.0;
-  static const double space_lg = 16.0;
-  static const double space_xl = 24.0;
-  static const double space_xxl = 32.0;
+  static const double spaceXs = 4.0;
+  static const double spaceSm = 8.0;
+  static const double spaceMd = 12.0;
+  static const double spaceLg = 16.0;
+  static const double spaceXl = 24.0;
+  static const double spaceXxl = 32.0;
   // type
   static const TextStyle display = TextStyle(fontSize: 28.0, fontWeight: FontWeight.w800, letterSpacing: -0.4);
   static const TextStyle title = TextStyle(fontSize: 22.0, fontWeight: FontWeight.w700, letterSpacing: -0.2);

@@ -24,8 +24,7 @@ class QualityFilterBar extends StatelessWidget {
   /// Tiers present in [tracks], in a stable display order.
   static List<QualityTier> tiersIn(List<Track> tracks) {
     final present = <QualityTier>{
-      for (final t in tracks)
-        if (qualityTierOf(t.quality) case final tier?) tier,
+      for (final t in tracks) ?qualityTierOf(t.quality),
     };
     return [
       for (final tier in QualityTier.values)
@@ -84,14 +83,14 @@ class _TierChip extends StatelessWidget {
     final cs = Theme.of(context).colorScheme;
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(TuneTokens.radius_pill),
+      borderRadius: BorderRadius.circular(TuneTokens.radiusPill),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
         decoration: BoxDecoration(
           // Active chips carry their own tier colour, so the bar reads like the
           // badges it filters on.
           color: active ? tier.background : cs.surfaceContainerHighest,
-          borderRadius: BorderRadius.circular(TuneTokens.radius_pill),
+          borderRadius: BorderRadius.circular(TuneTokens.radiusPill),
         ),
         child: Text(
           tier.label,
