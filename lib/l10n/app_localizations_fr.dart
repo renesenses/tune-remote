@@ -352,4 +352,32 @@ class AppLFr extends AppL {
   @override
   String get syncedLyricsPremium =>
       'Les paroles synchronisées nécessitent une licence premium — texte brut affiché.';
+
+  @override
+  String get smartRadio => 'Radio intelligente';
+
+  @override
+  String get smartRadioGenerate => 'Surprends-moi';
+
+  @override
+  String get smartRadioHint =>
+      'Compose une sélection dans votre bibliothèque — d\'après ce que vous écoutez vraiment, ou choisissez une humeur.';
+
+  @override
+  String get moodHappy => 'Joyeux';
+
+  @override
+  String get moodEnergetic => 'Énergique';
+
+  @override
+  String get moodCalm => 'Calme';
+
+  @override
+  String get moodFocus => 'Concentration';
+
+  @override
+  String get moodRomantic => 'Romantique';
+
+  @override
+  String get moodSad => 'Mélancolie';
 }

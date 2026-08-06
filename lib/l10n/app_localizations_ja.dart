@@ -346,4 +346,31 @@ class AppLJa extends AppL {
 
   @override
   String get syncedLyricsPremium => '同期歌詞にはプレミアムライセンスが必要です — プレーンテキストを表示しています。';
+
+  @override
+  String get smartRadio => 'スマートラジオ';
+
+  @override
+  String get smartRadioGenerate => 'おまかせ';
+
+  @override
+  String get smartRadioHint => '実際によく聴く曲をもとに、ライブラリから新しい選曲を作ります。気分から選ぶこともできます。';
+
+  @override
+  String get moodHappy => 'ハッピー';
+
+  @override
+  String get moodEnergetic => 'エネルギッシュ';
+
+  @override
+  String get moodCalm => '穏やか';
+
+  @override
+  String get moodFocus => '集中';
+
+  @override
+  String get moodRomantic => 'ロマンティック';
+
+  @override
+  String get moodSad => 'メランコリー';
 }

@@ -148,5 +148,14 @@
   },
   "lyrics": "Lyrics",
   "noLyrics": "No lyrics for this track",
-  "syncedLyricsPremium": "Synced lyrics require a premium server licence — showing the plain text."
+  "syncedLyricsPremium": "Synced lyrics require a premium server licence — showing the plain text.",
+  "smartRadio": "Smart radio",
+  "smartRadioGenerate": "Surprise me",
+  "smartRadioHint": "Builds a fresh selection from your own library — based on what you actually listen to, or pick a mood.",
+  "moodHappy": "Happy",
+  "moodEnergetic": "Energetic",
+  "moodCalm": "Calm",
+  "moodFocus": "Focus",
+  "moodRomantic": "Romantic",
+  "moodSad": "Melancholy"
 }

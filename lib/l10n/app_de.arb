@@ -106,5 +106,14 @@
   "playsCount": "{n,plural, =0{keine Wiedergaben}=1{1 Wiedergabe}other{{n} Wiedergaben}}",
   "lyrics": "Songtext",
   "noLyrics": "Kein Songtext für diesen Titel",
-  "syncedLyricsPremium": "Synchronisierter Songtext erfordert eine Premium-Lizenz — es wird der reine Text angezeigt."
+  "syncedLyricsPremium": "Synchronisierter Songtext erfordert eine Premium-Lizenz — es wird der reine Text angezeigt.",
+  "smartRadio": "Smart-Radio",
+  "smartRadioGenerate": "Überrasch mich",
+  "smartRadioHint": "Stellt eine Auswahl aus Ihrer Bibliothek zusammen — nach Ihrem tatsächlichen Hörverhalten, oder wählen Sie eine Stimmung.",
+  "moodHappy": "Fröhlich",
+  "moodEnergetic": "Energiegeladen",
+  "moodCalm": "Ruhig",
+  "moodFocus": "Fokus",
+  "moodRomantic": "Romantisch",
+  "moodSad": "Melancholie"
 }

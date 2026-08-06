@@ -750,6 +750,60 @@ abstract class AppL {
   /// In en, this message translates to:
   /// **'Synced lyrics require a premium server licence — showing the plain text.'**
   String get syncedLyricsPremium;
+
+  /// No description provided for @smartRadio.
+  ///
+  /// In en, this message translates to:
+  /// **'Smart radio'**
+  String get smartRadio;
+
+  /// No description provided for @smartRadioGenerate.
+  ///
+  /// In en, this message translates to:
+  /// **'Surprise me'**
+  String get smartRadioGenerate;
+
+  /// No description provided for @smartRadioHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Builds a fresh selection from your own library — based on what you actually listen to, or pick a mood.'**
+  String get smartRadioHint;
+
+  /// No description provided for @moodHappy.
+  ///
+  /// In en, this message translates to:
+  /// **'Happy'**
+  String get moodHappy;
+
+  /// No description provided for @moodEnergetic.
+  ///
+  /// In en, this message translates to:
+  /// **'Energetic'**
+  String get moodEnergetic;
+
+  /// No description provided for @moodCalm.
+  ///
+  /// In en, this message translates to:
+  /// **'Calm'**
+  String get moodCalm;
+
+  /// No description provided for @moodFocus.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus'**
+  String get moodFocus;
+
+  /// No description provided for @moodRomantic.
+  ///
+  /// In en, this message translates to:
+  /// **'Romantic'**
+  String get moodRomantic;
+
+  /// No description provided for @moodSad.
+  ///
+  /// In en, this message translates to:
+  /// **'Melancholy'**
+  String get moodSad;
 }
 
 class _AppLDelegate extends LocalizationsDelegate<AppL> {

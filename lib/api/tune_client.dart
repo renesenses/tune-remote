@@ -510,6 +510,26 @@ class TuneClient {
     }
   }
 
+  // ── Smart radio (server-side generators, local library only) ────────
+
+  /// A discovery mix built from the genres you actually listen to (or unplayed
+  /// tracks when there is no history yet).
+  Future<List<Track>> discoveryMix({int limit = 30}) async =>
+      _smartAiTracks('/smart-ai/discovery', {'limit': limit});
+
+  /// A mix for a mood: happy | sad | energetic | calm | focus | romantic.
+  Future<List<Track>> moodMix(String mood, {int limit = 30}) async =>
+      _smartAiTracks('/smart-ai/mood', {'mood': mood, 'limit': limit});
+
+  Future<List<Track>> _smartAiTracks(
+      String path, Map<String, dynamic> body) async {
+    final d = await _post(path, body) as Map<String, dynamic>;
+    return (d['tracks'] as List? ?? const [])
+        .whereType<Map<String, dynamic>>()
+        .map((m) => Track.fromJson(m, source: 'local'))
+        .toList();
+  }
+
   void close() => _http.close();
 }
 

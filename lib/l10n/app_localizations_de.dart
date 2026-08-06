@@ -352,4 +352,32 @@ class AppLDe extends AppL {
   @override
   String get syncedLyricsPremium =>
       'Synchronisierter Songtext erfordert eine Premium-Lizenz — es wird der reine Text angezeigt.';
+
+  @override
+  String get smartRadio => 'Smart-Radio';
+
+  @override
+  String get smartRadioGenerate => 'Überrasch mich';
+
+  @override
+  String get smartRadioHint =>
+      'Stellt eine Auswahl aus Ihrer Bibliothek zusammen — nach Ihrem tatsächlichen Hörverhalten, oder wählen Sie eine Stimmung.';
+
+  @override
+  String get moodHappy => 'Fröhlich';
+
+  @override
+  String get moodEnergetic => 'Energiegeladen';
+
+  @override
+  String get moodCalm => 'Ruhig';
+
+  @override
+  String get moodFocus => 'Fokus';
+
+  @override
+  String get moodRomantic => 'Romantisch';
+
+  @override
+  String get moodSad => 'Melancholie';
 }
