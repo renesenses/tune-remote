@@ -39,9 +39,13 @@ class Quality {
   }
 
   /// True for anything above CD quality (16-bit / 44.1 kHz).
+  ///
+  /// The threshold is 44.1 kHz, not 48 kHz: 48 kHz is already above CD, and a
+  /// 48 kHz track was being reported as CD here while the iPad app (and this
+  /// getter's own doc) called it hi-res.
   bool get isHiRes =>
       (bitDepth != null && bitDepth! > 16) ||
-      (sampleRate != null && sampleRate! > 48000);
+      (sampleRate != null && sampleRate! > 44100);
 }
 
 class Track {
