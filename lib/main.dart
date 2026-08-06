@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'l10n/app_localizations.dart';
 import 'state/app_state.dart';
+import 'theme/tune_theme.dart';
 import 'screens/search_screen.dart';
 import 'screens/playlists_screen.dart';
 import 'screens/favorites_screen.dart';
@@ -28,13 +29,7 @@ class TuneRemoteApp extends StatelessWidget {
     return MaterialApp(
       title: 'Tune Remote',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6C5CE7),
-          brightness: Brightness.dark,
-        ),
-      ),
+      theme: tuneDarkTheme(),
       locale: locale,
       localizationsDelegates: AppL.localizationsDelegates,
       supportedLocales: AppL.supportedLocales,
