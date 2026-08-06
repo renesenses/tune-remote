@@ -7,6 +7,7 @@ import '../state/app_state.dart';
 import 'cover.dart';
 import 'favorite_button.dart';
 import 'playlist_actions.dart';
+import 'quality_badge.dart';
 
 /// A track row. Tapping plays it (single) by default, or runs [onTap] if given.
 /// A trailing ⋮ menu exposes "add to playlist" and, when [onRemove] is set
@@ -82,27 +83,7 @@ class TrackTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (q != null && !q.isEmpty)
-                    Container(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
-                      decoration: BoxDecoration(
-                        color: q.isHiRes
-                            ? cs.primaryContainer
-                            : cs.surfaceContainerHighest,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Text(
-                        q.short,
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w700,
-                          color: q.isHiRes
-                              ? cs.onPrimaryContainer
-                              : cs.onSurfaceVariant,
-                        ),
-                      ),
-                    ),
+                  if (q != null && !q.isEmpty) QualityBadge(quality: q),
                   if (track.durationMs != null)
                     Padding(
                       padding: const EdgeInsets.only(top: 3),
