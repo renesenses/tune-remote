@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 
 import '../screens/now_playing_screen.dart';
 import '../state/app_state.dart';
+import '../theme/tune_tokens.dart';
 import 'cover.dart';
+import 'quality_badge.dart';
 
 /// Compact now-playing bar shown above the bottom navigation.
 class MiniPlayer extends StatelessWidget {
@@ -30,6 +32,7 @@ class MiniPlayer extends StatelessWidget {
           LinearProgressIndicator(
             value: progress,
             minHeight: 2,
+            color: TuneTokens.accent,
             backgroundColor: cs.surfaceContainerHighest,
           ),
           Padding(
@@ -54,12 +57,24 @@ class MiniPlayer extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w600)),
-                              if (t.artistName != null)
-                                Text(t.artistName!,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        color: cs.onSurfaceVariant, fontSize: 12)),
+                              Row(
+                                children: [
+                                  if (t.artistName != null)
+                                    Flexible(
+                                      child: Text(t.artistName!,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                              color: cs.onSurfaceVariant,
+                                              fontSize: 12)),
+                                    ),
+                                  if (t.quality != null && !t.quality!.isEmpty) ...[
+                                    if (t.artistName != null)
+                                      const SizedBox(width: 6),
+                                    QualityBadge(quality: t.quality),
+                                  ],
+                                ],
+                              ),
                             ],
                           ),
                         ),
