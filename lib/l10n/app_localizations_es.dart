@@ -352,4 +352,32 @@ class AppLEs extends AppL {
   @override
   String get syncedLyricsPremium =>
       'La letra sincronizada requiere una licencia premium: se muestra el texto sin sincronizar.';
+
+  @override
+  String get smartRadio => 'Radio inteligente';
+
+  @override
+  String get smartRadioGenerate => 'Sorpréndeme';
+
+  @override
+  String get smartRadioHint =>
+      'Crea una selección de tu biblioteca según lo que escuchas de verdad, o elige un estado de ánimo.';
+
+  @override
+  String get moodHappy => 'Alegre';
+
+  @override
+  String get moodEnergetic => 'Enérgico';
+
+  @override
+  String get moodCalm => 'Tranquilo';
+
+  @override
+  String get moodFocus => 'Concentración';
+
+  @override
+  String get moodRomantic => 'Romántico';
+
+  @override
+  String get moodSad => 'Melancolía';
 }

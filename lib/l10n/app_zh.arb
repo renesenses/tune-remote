@@ -106,5 +106,14 @@
   "playsCount": "{n,plural, other{{n} 次播放}}",
   "lyrics": "歌词",
   "noLyrics": "此曲目没有歌词",
-  "syncedLyricsPremium": "同步歌词需要高级许可证 — 显示纯文本。"
+  "syncedLyricsPremium": "同步歌词需要高级许可证 — 显示纯文本。",
+  "smartRadio": "智能电台",
+  "smartRadioGenerate": "给我惊喜",
+  "smartRadioHint": "根据你真正常听的内容，从你的音乐库中生成新的选集，或选择一种心情。",
+  "moodHappy": "欢快",
+  "moodEnergetic": "活力",
+  "moodCalm": "平静",
+  "moodFocus": "专注",
+  "moodRomantic": "浪漫",
+  "moodSad": "忧伤"
 }

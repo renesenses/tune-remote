@@ -106,5 +106,14 @@
   "playsCount": "{n,plural, =0{aucune écoute}=1{1 écoute}other{{n} écoutes}}",
   "lyrics": "Paroles",
   "noLyrics": "Pas de paroles pour ce titre",
-  "syncedLyricsPremium": "Les paroles synchronisées nécessitent une licence premium — texte brut affiché."
+  "syncedLyricsPremium": "Les paroles synchronisées nécessitent une licence premium — texte brut affiché.",
+  "smartRadio": "Radio intelligente",
+  "smartRadioGenerate": "Surprends-moi",
+  "smartRadioHint": "Compose une sélection dans votre bibliothèque — d'après ce que vous écoutez vraiment, ou choisissez une humeur.",
+  "moodHappy": "Joyeux",
+  "moodEnergetic": "Énergique",
+  "moodCalm": "Calme",
+  "moodFocus": "Concentration",
+  "moodRomantic": "Romantique",
+  "moodSad": "Mélancolie"
 }

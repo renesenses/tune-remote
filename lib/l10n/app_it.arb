@@ -106,5 +106,14 @@
   "playsCount": "{n,plural, =0{nessun ascolto}=1{1 ascolto}other{{n} ascolti}}",
   "lyrics": "Testo",
   "noLyrics": "Nessun testo per questo brano",
-  "syncedLyricsPremium": "Il testo sincronizzato richiede una licenza premium: viene mostrato il testo semplice."
+  "syncedLyricsPremium": "Il testo sincronizzato richiede una licenza premium: viene mostrato il testo semplice.",
+  "smartRadio": "Radio intelligente",
+  "smartRadioGenerate": "Sorprendimi",
+  "smartRadioHint": "Crea una selezione dalla tua libreria in base a ciò che ascolti davvero, oppure scegli un'atmosfera.",
+  "moodHappy": "Allegro",
+  "moodEnergetic": "Energico",
+  "moodCalm": "Calmo",
+  "moodFocus": "Concentrazione",
+  "moodRomantic": "Romantico",
+  "moodSad": "Malinconia"
 }

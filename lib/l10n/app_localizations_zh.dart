@@ -345,4 +345,31 @@ class AppLZh extends AppL {
 
   @override
   String get syncedLyricsPremium => '同步歌词需要高级许可证 — 显示纯文本。';
+
+  @override
+  String get smartRadio => '智能电台';
+
+  @override
+  String get smartRadioGenerate => '给我惊喜';
+
+  @override
+  String get smartRadioHint => '根据你真正常听的内容，从你的音乐库中生成新的选集，或选择一种心情。';
+
+  @override
+  String get moodHappy => '欢快';
+
+  @override
+  String get moodEnergetic => '活力';
+
+  @override
+  String get moodCalm => '平静';
+
+  @override
+  String get moodFocus => '专注';
+
+  @override
+  String get moodRomantic => '浪漫';
+
+  @override
+  String get moodSad => '忧伤';
 }

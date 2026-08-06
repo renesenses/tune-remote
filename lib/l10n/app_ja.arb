@@ -106,5 +106,14 @@
   "playsCount": "{n,plural, other{{n} 回再生}}",
   "lyrics": "歌詞",
   "noLyrics": "この曲の歌詞はありません",
-  "syncedLyricsPremium": "同期歌詞にはプレミアムライセンスが必要です — プレーンテキストを表示しています。"
+  "syncedLyricsPremium": "同期歌詞にはプレミアムライセンスが必要です — プレーンテキストを表示しています。",
+  "smartRadio": "スマートラジオ",
+  "smartRadioGenerate": "おまかせ",
+  "smartRadioHint": "実際によく聴く曲をもとに、ライブラリから新しい選曲を作ります。気分から選ぶこともできます。",
+  "moodHappy": "ハッピー",
+  "moodEnergetic": "エネルギッシュ",
+  "moodCalm": "穏やか",
+  "moodFocus": "集中",
+  "moodRomantic": "ロマンティック",
+  "moodSad": "メランコリー"
 }

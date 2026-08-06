@@ -106,5 +106,14 @@
   "playsCount": "{n,plural, =0{sin reproducciones}=1{1 reproducción}other{{n} reproducciones}}",
   "lyrics": "Letra",
   "noLyrics": "Sin letra para esta pista",
-  "syncedLyricsPremium": "La letra sincronizada requiere una licencia premium: se muestra el texto sin sincronizar."
+  "syncedLyricsPremium": "La letra sincronizada requiere una licencia premium: se muestra el texto sin sincronizar.",
+  "smartRadio": "Radio inteligente",
+  "smartRadioGenerate": "Sorpréndeme",
+  "smartRadioHint": "Crea una selección de tu biblioteca según lo que escuchas de verdad, o elige un estado de ánimo.",
+  "moodHappy": "Alegre",
+  "moodEnergetic": "Enérgico",
+  "moodCalm": "Tranquilo",
+  "moodFocus": "Concentración",
+  "moodRomantic": "Romántico",
+  "moodSad": "Melancolía"
 }

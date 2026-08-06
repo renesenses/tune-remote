@@ -351,4 +351,32 @@ class AppLEn extends AppL {
   @override
   String get syncedLyricsPremium =>
       'Synced lyrics require a premium server licence — showing the plain text.';
+
+  @override
+  String get smartRadio => 'Smart radio';
+
+  @override
+  String get smartRadioGenerate => 'Surprise me';
+
+  @override
+  String get smartRadioHint =>
+      'Builds a fresh selection from your own library — based on what you actually listen to, or pick a mood.';
+
+  @override
+  String get moodHappy => 'Happy';
+
+  @override
+  String get moodEnergetic => 'Energetic';
+
+  @override
+  String get moodCalm => 'Calm';
+
+  @override
+  String get moodFocus => 'Focus';
+
+  @override
+  String get moodRomantic => 'Romantic';
+
+  @override
+  String get moodSad => 'Melancholy';
 }

@@ -346,4 +346,32 @@ class AppLKo extends AppL {
 
   @override
   String get syncedLyricsPremium => '동기화 가사는 프리미엄 라이선스가 필요합니다 — 일반 텍스트를 표시합니다.';
+
+  @override
+  String get smartRadio => '스마트 라디오';
+
+  @override
+  String get smartRadioGenerate => '놀래켜 줘';
+
+  @override
+  String get smartRadioHint =>
+      '실제로 즐겨 듣는 곡을 바탕으로 라이브러리에서 새 선곡을 만듭니다. 분위기로 고를 수도 있습니다.';
+
+  @override
+  String get moodHappy => '행복';
+
+  @override
+  String get moodEnergetic => '활기찬';
+
+  @override
+  String get moodCalm => '차분한';
+
+  @override
+  String get moodFocus => '집중';
+
+  @override
+  String get moodRomantic => '로맨틱';
+
+  @override
+  String get moodSad => '멜랑콜리';
 }

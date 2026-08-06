@@ -351,4 +351,32 @@ class AppLIt extends AppL {
   @override
   String get syncedLyricsPremium =>
       'Il testo sincronizzato richiede una licenza premium: viene mostrato il testo semplice.';
+
+  @override
+  String get smartRadio => 'Radio intelligente';
+
+  @override
+  String get smartRadioGenerate => 'Sorprendimi';
+
+  @override
+  String get smartRadioHint =>
+      'Crea una selezione dalla tua libreria in base a ciò che ascolti davvero, oppure scegli un\'atmosfera.';
+
+  @override
+  String get moodHappy => 'Allegro';
+
+  @override
+  String get moodEnergetic => 'Energico';
+
+  @override
+  String get moodCalm => 'Calmo';
+
+  @override
+  String get moodFocus => 'Concentrazione';
+
+  @override
+  String get moodRomantic => 'Romantico';
+
+  @override
+  String get moodSad => 'Malinconia';
 }
