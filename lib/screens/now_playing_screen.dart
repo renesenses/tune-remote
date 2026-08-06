@@ -5,6 +5,7 @@ import '../api/models.dart';
 import '../l10n/app_localizations.dart';
 import '../state/app_state.dart';
 import '../widgets/cover.dart';
+import '../widgets/lyrics_panel.dart';
 import '../widgets/favorite_button.dart';
 import '../widgets/responsive.dart';
 import '../widgets/spectrum_visualizer.dart';
@@ -18,8 +19,11 @@ class NowPlayingScreen extends StatefulWidget {
   State<NowPlayingScreen> createState() => _NowPlayingScreenState();
 }
 
+/// What the artwork area shows. Cycled by the toolbar button.
+enum _ArtView { cover, visualizer, lyrics }
+
 class _NowPlayingScreenState extends State<NowPlayingScreen> {
-  bool _viz = false;
+  _ArtView _view = _ArtView.cover;
   double? _drag;
 
   String _fmt(int ms) {
@@ -120,7 +124,20 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
       height: artSide,
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 350),
-        child: _viz
+        child: _view == _ArtView.lyrics
+            ? Container(
+                key: const ValueKey('lyrics'),
+                decoration: BoxDecoration(
+                  color: cs.surfaceContainerHigh,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                clipBehavior: Clip.antiAlias,
+                child: LyricsPanel(
+                  trackId: t.source == 'local' ? int.tryParse(t.sourceId) : null,
+                  positionMs: pos.round(),
+                ),
+              )
+            : _view == _ArtView.visualizer
             ? Container(
                 key: const ValueKey('viz'),
                 decoration: BoxDecoration(
@@ -251,9 +268,21 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
         actions: [
           FavoriteButton(source: t.source, type: 'tracks', id: t.sourceId),
           IconButton(
-            tooltip: _viz ? l.cover : l.visualizer,
-            icon: Icon(_viz ? Icons.album : Icons.graphic_eq),
-            onPressed: () => setState(() => _viz = !_viz),
+            tooltip: switch (_view) {
+              _ArtView.cover => l.visualizer,
+              _ArtView.visualizer => l.lyrics,
+              _ArtView.lyrics => l.cover,
+            },
+            icon: Icon(switch (_view) {
+              _ArtView.cover => Icons.graphic_eq,
+              _ArtView.visualizer => Icons.lyrics_outlined,
+              _ArtView.lyrics => Icons.album,
+            }),
+            onPressed: () => setState(() => _view = switch (_view) {
+                  _ArtView.cover => _ArtView.visualizer,
+                  _ArtView.visualizer => _ArtView.lyrics,
+                  _ArtView.lyrics => _ArtView.cover,
+                }),
           ),
         ],
       ),

@@ -341,4 +341,14 @@ class AppLIt extends AppL {
     );
     return '$_temp0';
   }
+
+  @override
+  String get lyrics => 'Testo';
+
+  @override
+  String get noLyrics => 'Nessun testo per questo brano';
+
+  @override
+  String get syncedLyricsPremium =>
+      'Il testo sincronizzato richiede una licenza premium: viene mostrato il testo semplice.';
 }

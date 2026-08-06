@@ -103,5 +103,8 @@
   "navHome": "Start",
   "listeningActivity": "Höraktivität",
   "mostPlayed": "Meistgehört",
-  "playsCount": "{n,plural, =0{keine Wiedergaben}=1{1 Wiedergabe}other{{n} Wiedergaben}}"
+  "playsCount": "{n,plural, =0{keine Wiedergaben}=1{1 Wiedergabe}other{{n} Wiedergaben}}",
+  "lyrics": "Songtext",
+  "noLyrics": "Kein Songtext für diesen Titel",
+  "syncedLyricsPremium": "Synchronisierter Songtext erfordert eine Premium-Lizenz — es wird der reine Text angezeigt."
 }

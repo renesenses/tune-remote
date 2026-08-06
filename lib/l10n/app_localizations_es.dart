@@ -342,4 +342,14 @@ class AppLEs extends AppL {
     );
     return '$_temp0';
   }
+
+  @override
+  String get lyrics => 'Letra';
+
+  @override
+  String get noLyrics => 'Sin letra para esta pista';
+
+  @override
+  String get syncedLyricsPremium =>
+      'La letra sincronizada requiere una licencia premium: se muestra el texto sin sincronizar.';
 }

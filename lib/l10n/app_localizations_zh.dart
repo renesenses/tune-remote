@@ -336,4 +336,13 @@ class AppLZh extends AppL {
     );
     return '$_temp0';
   }
+
+  @override
+  String get lyrics => '歌词';
+
+  @override
+  String get noLyrics => '此曲目没有歌词';
+
+  @override
+  String get syncedLyricsPremium => '同步歌词需要高级许可证 — 显示纯文本。';
 }

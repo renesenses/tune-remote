@@ -103,5 +103,8 @@
   "navHome": "ホーム",
   "listeningActivity": "再生アクティビティ",
   "mostPlayed": "よく再生",
-  "playsCount": "{n,plural, other{{n} 回再生}}"
+  "playsCount": "{n,plural, other{{n} 回再生}}",
+  "lyrics": "歌詞",
+  "noLyrics": "この曲の歌詞はありません",
+  "syncedLyricsPremium": "同期歌詞にはプレミアムライセンスが必要です — プレーンテキストを表示しています。"
 }

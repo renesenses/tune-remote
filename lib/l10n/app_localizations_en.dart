@@ -341,4 +341,14 @@ class AppLEn extends AppL {
     );
     return '$_temp0';
   }
+
+  @override
+  String get lyrics => 'Lyrics';
+
+  @override
+  String get noLyrics => 'No lyrics for this track';
+
+  @override
+  String get syncedLyricsPremium =>
+      'Synced lyrics require a premium server licence — showing the plain text.';
 }

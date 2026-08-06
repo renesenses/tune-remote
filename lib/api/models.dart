@@ -500,3 +500,59 @@ class ListeningDashboard {
     );
   }
 }
+
+/// One timed lyric line (`lines` in `GET /lyrics/{track_id}`).
+class LyricLine {
+  final int timeMs;
+  final String text;
+  LyricLine({required this.timeMs, required this.text});
+
+  factory LyricLine.fromJson(Map<String, dynamic> j) => LyricLine(
+        timeMs: (j['time_ms'] as num?)?.toInt() ?? 0,
+        text: _s(j['text']),
+      );
+}
+
+/// Lyrics for a track (`GET /lyrics/{track_id}`).
+///
+/// Synced lyrics are a premium server feature: without the entitlement the
+/// server returns the plain text only and sets `premium_required` when timed
+/// lines *would* have been available.
+class Lyrics {
+  final bool synced;
+  final List<LyricLine> lines;
+  final String plainText;
+  final bool premiumRequired;
+
+  Lyrics({
+    this.synced = false,
+    this.lines = const [],
+    this.plainText = '',
+    this.premiumRequired = false,
+  });
+
+  bool get isEmpty => lines.isEmpty && plainText.trim().isEmpty;
+
+  factory Lyrics.fromJson(Map<String, dynamic> j) => Lyrics(
+        synced: j['synced'] == true,
+        lines: (j['lines'] as List? ?? const [])
+            .whereType<Map<String, dynamic>>()
+            .map(LyricLine.fromJson)
+            .toList(),
+        plainText: _s(j['plain_text']),
+        premiumRequired: j['premium_required'] == true,
+      );
+
+  /// Index of the line playing at [positionMs], or -1 before the first one.
+  int activeIndex(int positionMs) {
+    var i = -1;
+    for (var k = 0; k < lines.length; k++) {
+      if (lines[k].timeMs <= positionMs) {
+        i = k;
+      } else {
+        break; // lines are chronological
+      }
+    }
+    return i;
+  }
+}
