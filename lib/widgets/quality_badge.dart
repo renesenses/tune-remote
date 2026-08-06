@@ -6,7 +6,7 @@ import '../theme/tune_tokens.dart';
 /// Audio quality tier — the audiophile classification shared with the iPad app.
 ///
 /// - **dsd**   — codec is dsd/dsf/dff.
-/// - **hires** — above CD (over 16-bit / 48 kHz), per [Quality.isHiRes].
+/// - **hires** — above CD (over 16-bit / 44.1 kHz), per [Quality.isHiRes].
 /// - **cd**    — CD-quality lossless (flac/alac/wav/… or unknown codec).
 /// - **lossy** — mp3/aac/ogg/opus…
 enum QualityTier { dsd, hires, cd, lossy }
@@ -18,10 +18,15 @@ const _losslessCodecs = {
 };
 
 /// Classifies [q] into a [QualityTier]; null when there is nothing to classify.
+///
+/// Mirrors the iPad app's `QualityTier.from(_:)` so both clients label the same
+/// track identically.
 QualityTier? qualityTierOf(Quality? q) {
   if (q == null || q.isEmpty) return null;
   final codec = (q.codec ?? '').toLowerCase();
   if (_dsdCodecs.contains(codec)) return QualityTier.dsd;
+  // Some sources report DSD as its PCM-equivalent rate rather than by codec.
+  if ((q.sampleRate ?? 0) >= 2000000) return QualityTier.dsd;
   if (q.isHiRes) return QualityTier.hires;
   if (codec.isEmpty || _losslessCodecs.contains(codec)) return QualityTier.cd;
   return QualityTier.lossy;
