@@ -499,6 +499,17 @@ class TuneClient {
           (await _get('/history/dashboard?period=$period&top_n=$topN'))
               as Map<String, dynamic>);
 
+  /// Lyrics for a **local library** track. The endpoint keys off the local
+  /// track id, so streaming tracks have none — returns null instead of
+  /// throwing (404 is the normal "this track has no lyrics" answer).
+  Future<Lyrics?> lyrics(int trackId) async {
+    try {
+      return Lyrics.fromJson((await _get('/lyrics/$trackId')) as Map<String, dynamic>);
+    } catch (_) {
+      return null;
+    }
+  }
+
   void close() => _http.close();
 }
 

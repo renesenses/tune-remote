@@ -337,4 +337,13 @@ class AppLKo extends AppL {
     );
     return '$_temp0';
   }
+
+  @override
+  String get lyrics => '가사';
+
+  @override
+  String get noLyrics => '이 트랙의 가사가 없습니다';
+
+  @override
+  String get syncedLyricsPremium => '동기화 가사는 프리미엄 라이선스가 필요합니다 — 일반 텍스트를 표시합니다.';
 }

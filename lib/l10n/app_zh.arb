@@ -103,5 +103,8 @@
   "navHome": "主页",
   "listeningActivity": "收听活动",
   "mostPlayed": "最常播放",
-  "playsCount": "{n,plural, other{{n} 次播放}}"
+  "playsCount": "{n,plural, other{{n} 次播放}}",
+  "lyrics": "歌词",
+  "noLyrics": "此曲目没有歌词",
+  "syncedLyricsPremium": "同步歌词需要高级许可证 — 显示纯文本。"
 }

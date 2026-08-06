@@ -732,6 +732,24 @@ abstract class AppL {
   /// In en, this message translates to:
   /// **'{n,plural, =0{no plays}=1{1 play}other{{n} plays}}'**
   String playsCount(int n);
+
+  /// No description provided for @lyrics.
+  ///
+  /// In en, this message translates to:
+  /// **'Lyrics'**
+  String get lyrics;
+
+  /// No description provided for @noLyrics.
+  ///
+  /// In en, this message translates to:
+  /// **'No lyrics for this track'**
+  String get noLyrics;
+
+  /// No description provided for @syncedLyricsPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Synced lyrics require a premium server licence — showing the plain text.'**
+  String get syncedLyricsPremium;
 }
 
 class _AppLDelegate extends LocalizationsDelegate<AppL> {

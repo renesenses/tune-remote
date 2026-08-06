@@ -337,4 +337,13 @@ class AppLJa extends AppL {
     );
     return '$_temp0';
   }
+
+  @override
+  String get lyrics => '歌詞';
+
+  @override
+  String get noLyrics => 'この曲の歌詞はありません';
+
+  @override
+  String get syncedLyricsPremium => '同期歌詞にはプレミアムライセンスが必要です — プレーンテキストを表示しています。';
 }

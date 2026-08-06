@@ -103,5 +103,8 @@
   "navHome": "Home",
   "listeningActivity": "Attività di ascolto",
   "mostPlayed": "Più ascoltati",
-  "playsCount": "{n,plural, =0{nessun ascolto}=1{1 ascolto}other{{n} ascolti}}"
+  "playsCount": "{n,plural, =0{nessun ascolto}=1{1 ascolto}other{{n} ascolti}}",
+  "lyrics": "Testo",
+  "noLyrics": "Nessun testo per questo brano",
+  "syncedLyricsPremium": "Il testo sincronizzato richiede una licenza premium: viene mostrato il testo semplice."
 }

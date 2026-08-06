@@ -342,4 +342,14 @@ class AppLFr extends AppL {
     );
     return '$_temp0';
   }
+
+  @override
+  String get lyrics => 'Paroles';
+
+  @override
+  String get noLyrics => 'Pas de paroles pour ce titre';
+
+  @override
+  String get syncedLyricsPremium =>
+      'Les paroles synchronisées nécessitent une licence premium — texte brut affiché.';
 }

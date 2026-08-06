@@ -145,5 +145,8 @@
         "type": "int"
       }
     }
-  }
+  },
+  "lyrics": "Lyrics",
+  "noLyrics": "No lyrics for this track",
+  "syncedLyricsPremium": "Synced lyrics require a premium server licence — showing the plain text."
 }

@@ -103,5 +103,8 @@
   "navHome": "Accueil",
   "listeningActivity": "Écoute récente",
   "mostPlayed": "Les plus écoutés",
-  "playsCount": "{n,plural, =0{aucune écoute}=1{1 écoute}other{{n} écoutes}}"
+  "playsCount": "{n,plural, =0{aucune écoute}=1{1 écoute}other{{n} écoutes}}",
+  "lyrics": "Paroles",
+  "noLyrics": "Pas de paroles pour ce titre",
+  "syncedLyricsPremium": "Les paroles synchronisées nécessitent une licence premium — texte brut affiché."
 }

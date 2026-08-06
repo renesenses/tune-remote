@@ -103,5 +103,8 @@
   "navHome": "홈",
   "listeningActivity": "청취 활동",
   "mostPlayed": "많이 재생",
-  "playsCount": "{n,plural, other{{n}회 재생}}"
+  "playsCount": "{n,plural, other{{n}회 재생}}",
+  "lyrics": "가사",
+  "noLyrics": "이 트랙의 가사가 없습니다",
+  "syncedLyricsPremium": "동기화 가사는 프리미엄 라이선스가 필요합니다 — 일반 텍스트를 표시합니다."
 }

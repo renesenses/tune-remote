@@ -342,4 +342,14 @@ class AppLDe extends AppL {
     );
     return '$_temp0';
   }
+
+  @override
+  String get lyrics => 'Songtext';
+
+  @override
+  String get noLyrics => 'Kein Songtext für diesen Titel';
+
+  @override
+  String get syncedLyricsPremium =>
+      'Synchronisierter Songtext erfordert eine Premium-Lizenz — es wird der reine Text angezeigt.';
 }
