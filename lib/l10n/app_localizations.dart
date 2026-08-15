@@ -9,6 +9,7 @@ import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
 import 'app_localizations_fr.dart';
+import 'app_localizations_hu.dart';
 import 'app_localizations_it.dart';
 import 'app_localizations_ja.dart';
 import 'app_localizations_ko.dart';
@@ -103,6 +104,7 @@ abstract class AppL {
     Locale('en'),
     Locale('es'),
     Locale('fr'),
+    Locale('hu'),
     Locale('it'),
     Locale('ja'),
     Locale('ko'),
@@ -820,6 +822,7 @@ class _AppLDelegate extends LocalizationsDelegate<AppL> {
     'en',
     'es',
     'fr',
+    'hu',
     'it',
     'ja',
     'ko',
@@ -841,6 +844,8 @@ AppL lookupAppL(Locale locale) {
       return AppLEs();
     case 'fr':
       return AppLFr();
+    case 'hu':
+      return AppLHu();
     case 'it':
       return AppLIt();
     case 'ja':
