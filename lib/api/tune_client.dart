@@ -377,6 +377,16 @@ class TuneClient {
   Future<void> patchZone(int zoneId, Map<String, dynamic> body) =>
       _patch('/zones/$zoneId', body);
 
+  /// Set a zone's volume — PUT /zones/{id}/volume.
+  ///
+  /// `volume` is 0.0–1.0, the same scale as [Zone.volume], so a value read from
+  /// a zone can be written back unchanged. The server also accepts 0–100 from
+  /// older clients and normalises anything above 1.0 by dividing by 100 —
+  /// which is exactly why we must stay on the 0.0–1.0 scale here: sending the
+  /// integer 1 to mean "1 %" would be read as full volume.
+  Future<void> setZoneVolume(int zoneId, double volume) =>
+      _put('/zones/$zoneId/volume', {'volume': volume.clamp(0.0, 1.0)});
+
   /// Remember a zone as the server's default output.
   Future<void> setDefaultZone(int zoneId) =>
       _put('/system/settings/default-zone', {'zone_id': zoneId});
