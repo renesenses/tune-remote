@@ -4,15 +4,45 @@ import 'package:http/http.dart' as http;
 import 'models.dart';
 
 /// Thin REST client for the tune-server backend. Pure remote: every call
-/// targets `http://<host>/api/v1/...` exactly like the working web app.
+/// targets `http://<host>/api/v1/...` exactly like the working web app —
+/// ou, hors du reseau local, `https://bridge.mozaiklabs.fr/api/relay/<id>/...`
+/// via le relais Tune Bridge.
 class TuneClient {
   /// e.g. "192.168.1.18:8888" or "http://192.168.1.18:8888".
   final String host;
+
+  /// Identifiant du serveur sur le relais, et son jeton d'acces.
+  ///
+  /// Les deux ensemble font basculer le client en mode distant. Ils viennent
+  /// de `POST /api/v1/cloud/bridge/enable` sur le serveur, a faire une fois
+  /// depuis le reseau local.
+  final String? bridgeServerId;
+  final String? bridgeToken;
+
   final http.Client _http;
 
-  TuneClient(this.host, {http.Client? client}) : _http = client ?? http.Client();
+  TuneClient(
+    this.host, {
+    this.bridgeServerId,
+    this.bridgeToken,
+    http.Client? client,
+  }) : _http = client ?? http.Client();
+
+  /// Origine du relais public. Constante : le serveur la code lui-meme en dur
+  /// (`wss://bridge.mozaiklabs.fr/ws/server`), les deux doivent s'accorder.
+  static const String bridgeOrigin = 'https://bridge.mozaiklabs.fr';
+
+  /// Vrai quand les DEUX elements sont presents. Un identifiant sans jeton
+  /// donnerait des 401 en boucle ; mieux vaut rester en direct.
+  bool get viaBridge =>
+      (bridgeServerId?.isNotEmpty ?? false) && (bridgeToken?.isNotEmpty ?? false);
 
   String get baseUrl {
+    // Le relais expose `/api/relay/{server_id}/{chemin}` et transmet au
+    // serveur `/api/v1/{chemin}` : cette base remplace donc exactement
+    // `<hote>/api/v1`, sans qu'aucun appelant n'ait a changer son chemin.
+    if (viaBridge) return '$bridgeOrigin/api/relay/$bridgeServerId';
+
     var h = host.trim();
     if (h.isEmpty) return '';
     if (!h.startsWith('http://') && !h.startsWith('https://')) {
@@ -22,11 +52,21 @@ class TuneClient {
     return '$h/api/v1';
   }
 
+  /// En-tetes communs. En mode distant, le relais exige `BridgeToken` et
+  /// verifie qu'il correspond AU serveur vise — connaitre l'identifiant ne
+  /// suffit pas.
+  Map<String, String> _entetes({bool json = false}) {
+    final h = <String, String>{'Accept': 'application/json'};
+    if (json) h['Content-Type'] = 'application/json';
+    if (viaBridge) h['Authorization'] = 'BridgeToken $bridgeToken';
+    return h;
+  }
+
   Uri _uri(String path) => Uri.parse('$baseUrl$path');
 
   Future<dynamic> _get(String path) async {
     final r = await _http
-        .get(_uri(path), headers: const {'Accept': 'application/json'})
+        .get(_uri(path), headers: _entetes())
         .timeout(const Duration(seconds: 20));
     if (r.statusCode != 200) {
       throw TuneException('GET $path → ${r.statusCode}', r.statusCode);
@@ -41,10 +81,7 @@ class TuneClient {
   Future<dynamic> _post(String path, [Map<String, dynamic>? body]) async {
     final r = await _http
         .post(_uri(path),
-            headers: const {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
+            headers: _entetes(json: true),
             body: jsonEncode(body ?? const {}))
         .timeout(const Duration(seconds: 20));
     if (r.statusCode < 200 || r.statusCode >= 300) {
@@ -54,7 +91,9 @@ class TuneClient {
   }
 
   Future<void> _delete(String path) async {
-    final r = await _http.delete(_uri(path)).timeout(const Duration(seconds: 20));
+    final r = await _http
+        .delete(_uri(path), headers: _entetes())
+        .timeout(const Duration(seconds: 20));
     if (r.statusCode < 200 || r.statusCode >= 300) {
       throw TuneException('DELETE $path → ${r.statusCode}', r.statusCode);
     }
@@ -63,7 +102,7 @@ class TuneClient {
   Future<void> _patch(String path, Map<String, dynamic> body) async {
     final r = await _http
         .patch(_uri(path),
-            headers: const {'Content-Type': 'application/json'},
+            headers: _entetes(json: true),
             body: jsonEncode(body))
         .timeout(const Duration(seconds: 20));
     if (r.statusCode < 200 || r.statusCode >= 300) {
@@ -74,7 +113,7 @@ class TuneClient {
   Future<void> _put(String path, Map<String, dynamic> body) async {
     final r = await _http
         .put(_uri(path),
-            headers: const {'Content-Type': 'application/json'},
+            headers: _entetes(json: true),
             body: jsonEncode(body))
         .timeout(const Duration(seconds: 20));
     if (r.statusCode < 200 || r.statusCode >= 300) {

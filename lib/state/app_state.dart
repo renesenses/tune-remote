@@ -12,6 +12,10 @@ class AppState extends ChangeNotifier {
   static const _kHost = 'server_host';
   static const _kPort = 'server_port';
   static const _kZone = 'zone_id';
+  // Acces distant par le relais Tune Bridge. Les deux vont ensemble : un
+  // identifiant sans jeton ne donnerait que des 401.
+  static const _kBridgeId = 'bridge_server_id';
+  static const _kBridgeToken = 'bridge_token';
   static const _kLocale = 'locale';
   static const defaultPort = 8888;
 
@@ -75,6 +79,27 @@ class AppState extends ChangeNotifier {
   /// render audio (DLNA renderers + local outputs).
   List<Device> get outputs => _devices.where((d) => d.isRenderer).toList();
 
+  String _bridgeServerId = '';
+  String _bridgeToken = '';
+
+  /// Vrai quand l'application passe par le relais au lieu du reseau local.
+  bool get viaBridge => _bridgeServerId.isNotEmpty && _bridgeToken.isNotEmpty;
+  String get bridgeServerId => _bridgeServerId;
+
+  /// Le jeton n'est PAS expose : l'ecran de reglages n'a besoin que de savoir
+  /// s'il existe, jamais de le reafficher.
+  bool get hasBridgeToken => _bridgeToken.isNotEmpty;
+
+  /// Construit le client selon le mode courant. Un seul endroit decide, pour
+  /// qu'un appelant ne puisse pas oublier le jeton.
+  TuneClient? _construireClient() {
+    if (viaBridge) {
+      return TuneClient(host,
+          bridgeServerId: _bridgeServerId, bridgeToken: _bridgeToken);
+    }
+    return _host.isEmpty ? null : TuneClient(host);
+  }
+
   Future<void> init() async {
     final prefs = await SharedPreferences.getInstance();
     final lc = prefs.getString(_kLocale);
@@ -91,8 +116,11 @@ class AppState extends ChangeNotifier {
       }
     }
     _currentZoneId = prefs.getInt(_kZone);
-    if (_host.isNotEmpty) {
-      _client = TuneClient(host);
+    _bridgeServerId = prefs.getString(_kBridgeId) ?? '';
+    _bridgeToken = prefs.getString(_kBridgeToken) ?? '';
+    // En mode distant, l'hote local peut etre vide : le relais suffit.
+    if (_host.isNotEmpty || viaBridge) {
+      _client = _construireClient();
       await refresh();
     }
     notifyListeners();
@@ -135,7 +163,35 @@ class AppState extends ChangeNotifier {
     await prefs.setString(_kHost, _host);
     await prefs.setInt(_kPort, _port);
     _client?.close();
-    _client = _host.isEmpty ? null : TuneClient(this.host);
+    _client = _construireClient();
+    await refresh();
+  }
+
+  /// Enregistre — ou efface — l'appairage au relais.
+  ///
+  /// Les deux valeurs viennent de `POST /api/v1/cloud/bridge/enable`, appele
+  /// une fois depuis le reseau local. Passer une chaine vide aux deux revient
+  /// a repasser en direct.
+  ///
+  /// L'hote local est CONSERVE : c'est lui qu'on retrouve en rentrant chez
+  /// soi, et le relais est un detour, pas un remplacement.
+  Future<void> setBridge(String serverId, String token) async {
+    _bridgeServerId = serverId.trim();
+    _bridgeToken = token.trim();
+    final prefs = await SharedPreferences.getInstance();
+    if (_bridgeServerId.isEmpty || _bridgeToken.isEmpty) {
+      // Un seul des deux ne sert a rien : on efface la paire entiere plutot
+      // que de laisser un etat qui ne produirait que des 401.
+      _bridgeServerId = '';
+      _bridgeToken = '';
+      await prefs.remove(_kBridgeId);
+      await prefs.remove(_kBridgeToken);
+    } else {
+      await prefs.setString(_kBridgeId, _bridgeServerId);
+      await prefs.setString(_kBridgeToken, _bridgeToken);
+    }
+    _client?.close();
+    _client = _construireClient();
     await refresh();
   }
 
