@@ -7,6 +7,54 @@ import '../theme/tune_tokens.dart';
 import 'cover.dart';
 import 'quality_badge.dart';
 
+/// Speaker icon matching the current level, so the button reports the volume
+/// without being opened.
+IconData _volumeIcon(double v) {
+  if (v <= 0.001) return Icons.volume_off;
+  if (v < 0.5) return Icons.volume_down;
+  return Icons.volume_up;
+}
+
+/// Volume slider, opened from the playback bar.
+///
+/// A sheet rather than an inline slider: the bar is already crowded on a phone,
+/// and a slider squeezed between the track title and the transport buttons is
+/// too narrow to aim at.
+void _showVolumeSheet(BuildContext context) {
+  showModalBottomSheet<void>(
+    context: context,
+    showDragHandle: true,
+    builder: (sheetContext) => Consumer<AppState>(
+      builder: (_, app, _) {
+        final pct = (app.currentVolume * 100).round();
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: Row(
+              children: [
+                Icon(_volumeIcon(app.currentVolume)),
+                Expanded(
+                  child: Slider(
+                    value: app.currentVolume,
+                    // onChanged moves the knob locally; the request leaves only
+                    // on release, so a drag costs one call and not fifty.
+                    onChanged: app.previewVolume,
+                    onChangeEnd: (v) => app.setVolume(v),
+                  ),
+                ),
+                SizedBox(
+                  width: 44,
+                  child: Text('$pct %', textAlign: TextAlign.end),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+  );
+}
+
 /// Compact now-playing bar shown above the bottom navigation.
 class MiniPlayer extends StatelessWidget {
   const MiniPlayer({super.key});
@@ -82,6 +130,16 @@ class MiniPlayer extends StatelessWidget {
                     ),
                   ),
                 ),
+                // Volume: absent from the remote until now — the only way to
+                // change it was to walk to the server (FabienM). Hidden on
+                // fixed-volume zones, where the slider would be inert: those
+                // send at 100 % on purpose and let the DAC do the attenuating.
+                if (!z.fixedVolume)
+                  IconButton(
+                    visualDensity: VisualDensity.compact,
+                    icon: Icon(_volumeIcon(app.currentVolume)),
+                    onPressed: () => _showVolumeSheet(context),
+                  ),
                 IconButton(
                   visualDensity: VisualDensity.compact,
                   icon: const Icon(Icons.skip_previous),

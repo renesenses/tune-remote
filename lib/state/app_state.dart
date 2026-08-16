@@ -364,6 +364,54 @@ class AppState extends ChangeNotifier {
     }
   }
 
+  // ── Volume (current zone) ──────────────────────────────────────────
+  //
+  // `_pollZones` replaces the whole zone list every 2 seconds, so a slider
+  // bound straight to `currentZone.volume` snaps backwards while the user is
+  // still dragging — the server has not answered yet, and the poll returns the
+  // old value. We therefore hold the value the user chose for a short while and
+  // prefer it over anything the poll brings back. Same guard as the web client.
+  double? _volumeOverride;
+  DateTime? _volumeHoldUntil;
+
+  /// Volume of the current zone, 0.0–1.0, honouring a pending local change.
+  double get currentVolume {
+    final hold = _volumeHoldUntil;
+    if (_volumeOverride != null &&
+        hold != null &&
+        DateTime.now().isBefore(hold)) {
+      return _volumeOverride!;
+    }
+    return currentZone?.volume ?? 1.0;
+  }
+
+  /// Move the knob without touching the network — for `Slider.onChanged`.
+  void previewVolume(double v) {
+    _volumeOverride = v.clamp(0.0, 1.0);
+    _volumeHoldUntil = DateTime.now().add(const Duration(seconds: 3));
+    notifyListeners();
+  }
+
+  /// Commit the chosen volume — for `Slider.onChangeEnd`.
+  ///
+  /// Committing on drag end rather than on every frame keeps one request per
+  /// gesture instead of dozens. A failure restores whatever the server holds,
+  /// so the knob never lies about the real volume.
+  Future<void> setVolume(double v) async {
+    final c = _client;
+    final z = currentZone;
+    if (c == null || z == null) return;
+    previewVolume(v);
+    try {
+      await c.setZoneVolume(z.id, _volumeOverride!);
+    } catch (_) {
+      _volumeOverride = null;
+      _volumeHoldUntil = null;
+      notifyListeners();
+      rethrow;
+    }
+  }
+
   // ── Zone settings (current zone) ───────────────────────────────────
   Future<void> _patchCurrentZone(Map<String, dynamic> body) async {
     final c = _client;
