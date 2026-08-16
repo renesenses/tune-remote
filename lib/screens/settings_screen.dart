@@ -31,6 +31,8 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   late final TextEditingController _hostCtrl;
   late final TextEditingController _portCtrl;
+  late final TextEditingController _bridgeIdCtrl;
+  late final TextEditingController _bridgeTokenCtrl;
   bool _synced = false;
 
   @override
@@ -39,6 +41,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     final app = context.read<AppState>();
     _hostCtrl = TextEditingController(text: app.serverHost);
     _portCtrl = TextEditingController(text: app.serverPort.toString());
+    _bridgeIdCtrl = TextEditingController(text: app.bridgeServerId);
+    // Le jeton n'est JAMAIS reaffiche : le champ reste vide meme quand un
+    // appairage existe. Le reafficher n'aiderait personne et l'exposerait a
+    // qui regarde l'ecran par-dessus l'epaule.
+    _bridgeTokenCtrl = TextEditingController();
     // If the host was already loaded from prefs, we're in sync; otherwise
     // build() will populate the fields once init() finishes (see below).
     _synced = app.serverHost.isNotEmpty;
@@ -48,6 +55,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void dispose() {
     _hostCtrl.dispose();
     _portCtrl.dispose();
+    _bridgeIdCtrl.dispose();
+    _bridgeTokenCtrl.dispose();
     super.dispose();
   }
 
@@ -57,6 +66,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
       _portCtrl.text = AppState.defaultPort.toString();
     }
     await context.read<AppState>().setServer(_hostCtrl.text, _portCtrl.text);
+  }
+
+  Future<void> _apparier() async {
+    FocusScope.of(context).unfocus();
+    await context
+        .read<AppState>()
+        .setBridge(_bridgeIdCtrl.text, _bridgeTokenCtrl.text);
+    // Le champ du jeton se vide apres l'enregistrement : il est en
+    // preferences, l'ecran n'a plus a le porter.
+    _bridgeTokenCtrl.clear();
+  }
+
+  Future<void> _desapparier() async {
+    FocusScope.of(context).unfocus();
+    await context.read<AppState>().setBridge('', '');
+    _bridgeIdCtrl.clear();
+    _bridgeTokenCtrl.clear();
   }
 
   @override
@@ -132,6 +158,73 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     label: app.connected ? t.connected : t.disconnected),
             ],
           ),
+          const Divider(height: 32),
+
+          // ── Acces distant (relais Tune Bridge) ────────────────
+          //
+          // L'appairage se fait UNE FOIS depuis le reseau local : les deux
+          // valeurs viennent de `POST /api/v1/cloud/bridge/enable` sur le
+          // serveur. L'adresse locale au-dessus est conservee — le relais est
+          // un detour pour quand on n'est pas chez soi, pas un remplacement.
+          Row(
+            children: [
+              Text(t.remoteAccess,
+                  style: Theme.of(context).textTheme.titleMedium),
+              const SizedBox(width: 12),
+              if (app.viaBridge)
+                _StatusChip(connected: true, label: t.bridgeActive),
+            ],
+          ),
+          const SizedBox(height: 4),
+          Text(t.remoteAccessDesc,
+              style: Theme.of(context).textTheme.bodySmall),
+          const SizedBox(height: 12),
+          TextField(
+            controller: _bridgeIdCtrl,
+            autocorrect: false,
+            enableSuggestions: false,
+            decoration: InputDecoration(
+              labelText: t.bridgeServerId,
+              border: const OutlineInputBorder(),
+              isDense: true,
+            ),
+          ),
+          const SizedBox(height: 8),
+          TextField(
+            controller: _bridgeTokenCtrl,
+            autocorrect: false,
+            enableSuggestions: false,
+            obscureText: true,
+            decoration: InputDecoration(
+              // Un appairage existant se signale par le texte d'invite, pas en
+              // reaffichant le secret.
+              labelText: t.bridgeToken,
+              hintText: app.hasBridgeToken ? '••••••••' : null,
+              helperText: t.bridgeHint,
+              helperMaxLines: 2,
+              border: const OutlineInputBorder(),
+              isDense: true,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              FilledButton.icon(
+                onPressed: app.loading ? null : _apparier,
+                icon: const Icon(Icons.cloud_outlined),
+                label: Text(t.bridgePair),
+              ),
+              if (app.viaBridge) ...[
+                const SizedBox(width: 12),
+                TextButton.icon(
+                  onPressed: app.loading ? null : _desapparier,
+                  icon: const Icon(Icons.home_outlined),
+                  label: Text(t.bridgeUnpair),
+                ),
+              ],
+            ],
+          ),
+
           if (app.error != null) ...[
             const SizedBox(height: 8),
             Text(app.error!,

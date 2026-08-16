@@ -115,5 +115,13 @@
   "moodCalm": "平静",
   "moodFocus": "专注",
   "moodRomantic": "浪漫",
-  "moodSad": "忧伤"
+  "moodSad": "忧伤",
+  "remoteAccess": "远程访问",
+  "remoteAccessDesc": "通过 Tune Bridge 中继，从家庭网络之外访问此服务器。配对只需在家庭网络中进行一次。",
+  "bridgeServerId": "服务器 ID",
+  "bridgeToken": "访问令牌",
+  "bridgePair": "启用远程访问",
+  "bridgeUnpair": "返回本地网络",
+  "bridgeActive": "远程访问已启用",
+  "bridgeHint": "两个值均来自您的服务器：设置 → 远程访问。"
 }

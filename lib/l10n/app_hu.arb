@@ -115,5 +115,13 @@
   "moodCalm": "Nyugodt",
   "moodFocus": "Koncentráció",
   "moodRomantic": "Romantikus",
-  "moodSad": "Melankólia"
+  "moodSad": "Melankólia",
+  "remoteAccess": "Távoli hozzáférés",
+  "remoteAccessDesc": "A kiszolgáló elérése otthoni hálózaton kívülről, a Tune Bridge továbbítón keresztül. A párosítás egyszer, otthoni hálózatról történik.",
+  "bridgeServerId": "Kiszolgáló azonosítója",
+  "bridgeToken": "Hozzáférési token",
+  "bridgePair": "Távoli hozzáférés bekapcsolása",
+  "bridgeUnpair": "Vissza a helyi hálózatra",
+  "bridgeActive": "A távoli hozzáférés aktív",
+  "bridgeHint": "Mindkét érték a kiszolgálóról származik: Beállítások → Távoli hozzáférés."
 }

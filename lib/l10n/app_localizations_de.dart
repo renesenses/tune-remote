@@ -380,4 +380,30 @@ class AppLDe extends AppL {
 
   @override
   String get moodSad => 'Melancholie';
+
+  @override
+  String get remoteAccess => 'Fernzugriff';
+
+  @override
+  String get remoteAccessDesc =>
+      'Diesen Server von außerhalb Ihres Heimnetzes erreichen, über das Tune-Bridge-Relais. Einmalige Kopplung im Heimnetz.';
+
+  @override
+  String get bridgeServerId => 'Server-Kennung';
+
+  @override
+  String get bridgeToken => 'Zugriffstoken';
+
+  @override
+  String get bridgePair => 'Fernzugriff aktivieren';
+
+  @override
+  String get bridgeUnpair => 'Zurück ins Heimnetz';
+
+  @override
+  String get bridgeActive => 'Fernzugriff aktiv';
+
+  @override
+  String get bridgeHint =>
+      'Beide Werte stammen von Ihrem Server: Einstellungen → Fernzugriff.';
 }

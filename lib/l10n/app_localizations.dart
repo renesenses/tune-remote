@@ -806,6 +806,54 @@ abstract class AppL {
   /// In en, this message translates to:
   /// **'Melancholy'**
   String get moodSad;
+
+  /// Section title for reaching the server from outside the LAN
+  ///
+  /// In en, this message translates to:
+  /// **'Remote access'**
+  String get remoteAccess;
+
+  /// Explains what remote access does and that pairing happens once, at home
+  ///
+  /// In en, this message translates to:
+  /// **'Reach this server from outside your home network, through the Tune Bridge relay. Pair once from your home network.'**
+  String get remoteAccessDesc;
+
+  /// Label for the relay server identifier field
+  ///
+  /// In en, this message translates to:
+  /// **'Server ID'**
+  String get bridgeServerId;
+
+  /// Label for the relay access token field
+  ///
+  /// In en, this message translates to:
+  /// **'Access token'**
+  String get bridgeToken;
+
+  /// Button that saves the pairing and switches to remote mode
+  ///
+  /// In en, this message translates to:
+  /// **'Enable remote access'**
+  String get bridgePair;
+
+  /// Button that clears the pairing and goes back to the LAN address
+  ///
+  /// In en, this message translates to:
+  /// **'Back to local network'**
+  String get bridgeUnpair;
+
+  /// Chip shown when the client talks to the server through the relay
+  ///
+  /// In en, this message translates to:
+  /// **'Remote access active'**
+  String get bridgeActive;
+
+  /// Tells the user where to find both values
+  ///
+  /// In en, this message translates to:
+  /// **'Both values come from your server: Settings → Remote access.'**
+  String get bridgeHint;
 }
 
 class _AppLDelegate extends LocalizationsDelegate<AppL> {

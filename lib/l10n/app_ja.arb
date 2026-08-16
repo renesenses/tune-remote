@@ -115,5 +115,13 @@
   "moodCalm": "穏やか",
   "moodFocus": "集中",
   "moodRomantic": "ロマンティック",
-  "moodSad": "メランコリー"
+  "moodSad": "メランコリー",
+  "remoteAccess": "リモートアクセス",
+  "remoteAccessDesc": "Tune Bridge リレー経由で、自宅ネットワークの外からこのサーバーに接続します。ペアリングは自宅ネットワークから一度だけ行います。",
+  "bridgeServerId": "サーバー ID",
+  "bridgeToken": "アクセストークン",
+  "bridgePair": "リモートアクセスを有効にする",
+  "bridgeUnpair": "ローカルネットワークに戻る",
+  "bridgeActive": "リモートアクセス有効",
+  "bridgeHint": "どちらの値もサーバーから取得します：設定 → リモートアクセス。"
 }

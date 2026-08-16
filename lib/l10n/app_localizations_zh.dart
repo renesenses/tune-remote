@@ -372,4 +372,29 @@ class AppLZh extends AppL {
 
   @override
   String get moodSad => '忧伤';
+
+  @override
+  String get remoteAccess => '远程访问';
+
+  @override
+  String get remoteAccessDesc =>
+      '通过 Tune Bridge 中继，从家庭网络之外访问此服务器。配对只需在家庭网络中进行一次。';
+
+  @override
+  String get bridgeServerId => '服务器 ID';
+
+  @override
+  String get bridgeToken => '访问令牌';
+
+  @override
+  String get bridgePair => '启用远程访问';
+
+  @override
+  String get bridgeUnpair => '返回本地网络';
+
+  @override
+  String get bridgeActive => '远程访问已启用';
+
+  @override
+  String get bridgeHint => '两个值均来自您的服务器：设置 → 远程访问。';
 }

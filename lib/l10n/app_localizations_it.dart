@@ -379,4 +379,30 @@ class AppLIt extends AppL {
 
   @override
   String get moodSad => 'Malinconia';
+
+  @override
+  String get remoteAccess => 'Accesso remoto';
+
+  @override
+  String get remoteAccessDesc =>
+      'Raggiungere questo server da fuori casa, tramite il relè Tune Bridge. L’associazione si fa una volta, dalla rete locale.';
+
+  @override
+  String get bridgeServerId => 'Identificativo del server';
+
+  @override
+  String get bridgeToken => 'Token di accesso';
+
+  @override
+  String get bridgePair => 'Attivare l\'accesso remoto';
+
+  @override
+  String get bridgeUnpair => 'Tornare alla rete locale';
+
+  @override
+  String get bridgeActive => 'Accesso remoto attivo';
+
+  @override
+  String get bridgeHint =>
+      'Entrambi i valori provengono dal server: Impostazioni → Accesso remoto.';
 }

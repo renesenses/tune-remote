@@ -374,4 +374,29 @@ class AppLKo extends AppL {
 
   @override
   String get moodSad => '멜랑콜리';
+
+  @override
+  String get remoteAccess => '원격 접속';
+
+  @override
+  String get remoteAccessDesc =>
+      'Tune Bridge 중계를 통해 집 네트워크 밖에서 이 서버에 접속합니다. 페어링은 집 네트워크에서 한 번만 하면 됩니다.';
+
+  @override
+  String get bridgeServerId => '서버 ID';
+
+  @override
+  String get bridgeToken => '접속 토큰';
+
+  @override
+  String get bridgePair => '원격 접속 사용';
+
+  @override
+  String get bridgeUnpair => '로컬 네트워크로 돌아가기';
+
+  @override
+  String get bridgeActive => '원격 접속 사용 중';
+
+  @override
+  String get bridgeHint => '두 값 모두 서버에서 가져옵니다: 설정 → 원격 접속.';
 }

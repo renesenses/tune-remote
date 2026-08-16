@@ -157,5 +157,37 @@
   "moodCalm": "Calm",
   "moodFocus": "Focus",
   "moodRomantic": "Romantic",
-  "moodSad": "Melancholy"
+  "moodSad": "Melancholy",
+  "remoteAccess": "Remote access",
+  "@remoteAccess": {
+    "description": "Section title for reaching the server from outside the LAN"
+  },
+  "remoteAccessDesc": "Reach this server from outside your home network, through the Tune Bridge relay. Pair once from your home network.",
+  "@remoteAccessDesc": {
+    "description": "Explains what remote access does and that pairing happens once, at home"
+  },
+  "bridgeServerId": "Server ID",
+  "@bridgeServerId": {
+    "description": "Label for the relay server identifier field"
+  },
+  "bridgeToken": "Access token",
+  "@bridgeToken": {
+    "description": "Label for the relay access token field"
+  },
+  "bridgePair": "Enable remote access",
+  "@bridgePair": {
+    "description": "Button that saves the pairing and switches to remote mode"
+  },
+  "bridgeUnpair": "Back to local network",
+  "@bridgeUnpair": {
+    "description": "Button that clears the pairing and goes back to the LAN address"
+  },
+  "bridgeActive": "Remote access active",
+  "@bridgeActive": {
+    "description": "Chip shown when the client talks to the server through the relay"
+  },
+  "bridgeHint": "Both values come from your server: Settings → Remote access.",
+  "@bridgeHint": {
+    "description": "Tells the user where to find both values"
+  }
 }
