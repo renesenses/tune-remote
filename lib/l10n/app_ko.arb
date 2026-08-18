@@ -115,5 +115,13 @@
   "moodCalm": "차분한",
   "moodFocus": "집중",
   "moodRomantic": "로맨틱",
-  "moodSad": "멜랑콜리"
+  "moodSad": "멜랑콜리",
+  "remoteAccess": "원격 접속",
+  "remoteAccessDesc": "Tune Bridge 중계를 통해 집 네트워크 밖에서 이 서버에 접속합니다. 페어링은 집 네트워크에서 한 번만 하면 됩니다.",
+  "bridgeServerId": "서버 ID",
+  "bridgeToken": "접속 토큰",
+  "bridgePair": "원격 접속 사용",
+  "bridgeUnpair": "로컬 네트워크로 돌아가기",
+  "bridgeActive": "원격 접속 사용 중",
+  "bridgeHint": "두 값 모두 서버에서 가져옵니다: 설정 → 원격 접속."
 }

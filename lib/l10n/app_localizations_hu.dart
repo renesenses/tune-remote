@@ -379,4 +379,30 @@ class AppLHu extends AppL {
 
   @override
   String get moodSad => 'Melankólia';
+
+  @override
+  String get remoteAccess => 'Távoli hozzáférés';
+
+  @override
+  String get remoteAccessDesc =>
+      'A kiszolgáló elérése otthoni hálózaton kívülről, a Tune Bridge továbbítón keresztül. A párosítás egyszer, otthoni hálózatról történik.';
+
+  @override
+  String get bridgeServerId => 'Kiszolgáló azonosítója';
+
+  @override
+  String get bridgeToken => 'Hozzáférési token';
+
+  @override
+  String get bridgePair => 'Távoli hozzáférés bekapcsolása';
+
+  @override
+  String get bridgeUnpair => 'Vissza a helyi hálózatra';
+
+  @override
+  String get bridgeActive => 'A távoli hozzáférés aktív';
+
+  @override
+  String get bridgeHint =>
+      'Mindkét érték a kiszolgálóról származik: Beállítások → Távoli hozzáférés.';
 }

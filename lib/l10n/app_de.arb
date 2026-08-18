@@ -115,5 +115,13 @@
   "moodCalm": "Ruhig",
   "moodFocus": "Fokus",
   "moodRomantic": "Romantisch",
-  "moodSad": "Melancholie"
+  "moodSad": "Melancholie",
+  "remoteAccess": "Fernzugriff",
+  "remoteAccessDesc": "Diesen Server von außerhalb Ihres Heimnetzes erreichen, über das Tune-Bridge-Relais. Einmalige Kopplung im Heimnetz.",
+  "bridgeServerId": "Server-Kennung",
+  "bridgeToken": "Zugriffstoken",
+  "bridgePair": "Fernzugriff aktivieren",
+  "bridgeUnpair": "Zurück ins Heimnetz",
+  "bridgeActive": "Fernzugriff aktiv",
+  "bridgeHint": "Beide Werte stammen von Ihrem Server: Einstellungen → Fernzugriff."
 }

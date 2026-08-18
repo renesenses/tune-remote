@@ -115,5 +115,13 @@
   "moodCalm": "Calmo",
   "moodFocus": "Concentrazione",
   "moodRomantic": "Romantico",
-  "moodSad": "Malinconia"
+  "moodSad": "Malinconia",
+  "remoteAccess": "Accesso remoto",
+  "remoteAccessDesc": "Raggiungere questo server da fuori casa, tramite il relè Tune Bridge. L’associazione si fa una volta, dalla rete locale.",
+  "bridgeServerId": "Identificativo del server",
+  "bridgeToken": "Token di accesso",
+  "bridgePair": "Attivare l'accesso remoto",
+  "bridgeUnpair": "Tornare alla rete locale",
+  "bridgeActive": "Accesso remoto attivo",
+  "bridgeHint": "Entrambi i valori provengono dal server: Impostazioni → Accesso remoto."
 }

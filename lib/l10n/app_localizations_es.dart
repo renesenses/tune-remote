@@ -380,4 +380,30 @@ class AppLEs extends AppL {
 
   @override
   String get moodSad => 'Melancolía';
+
+  @override
+  String get remoteAccess => 'Acceso remoto';
+
+  @override
+  String get remoteAccessDesc =>
+      'Acceda a este servidor desde fuera de su red doméstica, a través del relé Tune Bridge. El emparejamiento se hace una vez, desde su red local.';
+
+  @override
+  String get bridgeServerId => 'Identificador del servidor';
+
+  @override
+  String get bridgeToken => 'Token de acceso';
+
+  @override
+  String get bridgePair => 'Activar el acceso remoto';
+
+  @override
+  String get bridgeUnpair => 'Volver a la red local';
+
+  @override
+  String get bridgeActive => 'Acceso remoto activo';
+
+  @override
+  String get bridgeHint =>
+      'Ambos valores provienen de su servidor: Ajustes → Acceso remoto.';
 }

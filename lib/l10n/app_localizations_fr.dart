@@ -380,4 +380,30 @@ class AppLFr extends AppL {
 
   @override
   String get moodSad => 'Mélancolie';
+
+  @override
+  String get remoteAccess => 'Accès distant';
+
+  @override
+  String get remoteAccessDesc =>
+      'Joindre ce serveur depuis l\'extérieur de chez vous, par le relais Tune Bridge. L\'appairage se fait une fois, depuis votre réseau local.';
+
+  @override
+  String get bridgeServerId => 'Identifiant du serveur';
+
+  @override
+  String get bridgeToken => 'Jeton d\'accès';
+
+  @override
+  String get bridgePair => 'Activer l\'accès distant';
+
+  @override
+  String get bridgeUnpair => 'Revenir au réseau local';
+
+  @override
+  String get bridgeActive => 'Accès distant actif';
+
+  @override
+  String get bridgeHint =>
+      'Les deux valeurs viennent de votre serveur : Réglages → Accès distant.';
 }

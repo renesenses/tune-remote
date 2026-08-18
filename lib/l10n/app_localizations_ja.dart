@@ -373,4 +373,29 @@ class AppLJa extends AppL {
 
   @override
   String get moodSad => 'メランコリー';
+
+  @override
+  String get remoteAccess => 'リモートアクセス';
+
+  @override
+  String get remoteAccessDesc =>
+      'Tune Bridge リレー経由で、自宅ネットワークの外からこのサーバーに接続します。ペアリングは自宅ネットワークから一度だけ行います。';
+
+  @override
+  String get bridgeServerId => 'サーバー ID';
+
+  @override
+  String get bridgeToken => 'アクセストークン';
+
+  @override
+  String get bridgePair => 'リモートアクセスを有効にする';
+
+  @override
+  String get bridgeUnpair => 'ローカルネットワークに戻る';
+
+  @override
+  String get bridgeActive => 'リモートアクセス有効';
+
+  @override
+  String get bridgeHint => 'どちらの値もサーバーから取得します：設定 → リモートアクセス。';
 }

@@ -379,4 +379,30 @@ class AppLEn extends AppL {
 
   @override
   String get moodSad => 'Melancholy';
+
+  @override
+  String get remoteAccess => 'Remote access';
+
+  @override
+  String get remoteAccessDesc =>
+      'Reach this server from outside your home network, through the Tune Bridge relay. Pair once from your home network.';
+
+  @override
+  String get bridgeServerId => 'Server ID';
+
+  @override
+  String get bridgeToken => 'Access token';
+
+  @override
+  String get bridgePair => 'Enable remote access';
+
+  @override
+  String get bridgeUnpair => 'Back to local network';
+
+  @override
+  String get bridgeActive => 'Remote access active';
+
+  @override
+  String get bridgeHint =>
+      'Both values come from your server: Settings → Remote access.';
 }
