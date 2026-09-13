@@ -406,4 +406,56 @@ class AppLFr extends AppL {
   @override
   String get bridgeHint =>
       'Les deux valeurs viennent de votre serveur : Réglages → Accès distant.';
+
+  @override
+  String get discoveryTitle => 'Se connecter à un serveur';
+
+  @override
+  String get discoverySection => 'Serveurs sur le réseau';
+
+  @override
+  String get discoverySearching => 'Recherche sur le réseau local…';
+
+  @override
+  String discoveryFoundCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n serveurs trouvés',
+      one: '1 serveur trouvé',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get discoveryNone => 'Aucun serveur Tune trouvé';
+
+  @override
+  String get discoveryNoneHint =>
+      'Vérifiez que le serveur est allumé et que cet appareil est sur le même réseau Wi-Fi.';
+
+  @override
+  String get discoveryLocalNetworkHint =>
+      'Si vous avez refusé l\'accès au réseau local, iOS ne trouve rien et ne dit rien. Autorisez-le dans Réglages → Tune Remote → Réseau local, puis relancez la recherche.';
+
+  @override
+  String get discoveryDenied => 'Découverte réseau refusée';
+
+  @override
+  String get discoveryDeniedHintIos =>
+      'Autorisez l\'accès au réseau local dans Réglages → Tune Remote → Réseau local, puis relancez la recherche.';
+
+  @override
+  String get discoveryDeniedHintAndroid =>
+      'Android a refusé la découverte réseau. Activez le Wi-Fi, quittez le mode avion, puis relancez la recherche.';
+
+  @override
+  String get discoveryRetry => 'Relancer la recherche';
+
+  @override
+  String get discoveryManualToggle => 'Saisir une adresse à la main';
+
+  @override
+  String get discoveryManualIntro =>
+      'Un serveur derrière un VPN ou sur un autre sous-réseau n\'est jamais découvert : indiquez son adresse.';
 }

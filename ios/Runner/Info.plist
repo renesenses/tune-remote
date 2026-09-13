@@ -24,6 +24,20 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<!-- Decouverte des serveurs Tune sur le reseau local (mDNS / Bonjour).
+
+	     Sans NSBonjourServices, iOS ne laisse pas l'application parcourir le
+	     type de service ; sans NSLocalNetworkUsageDescription, la demande
+	     d'autorisation ne s'affiche meme pas. Un refus est SILENCIEUX : la
+	     recherche tourne et ne rend rien, sans la moindre erreur — c'est
+	     pourquoi l'ecran de connexion propose les deux explications quand il
+	     ne trouve rien. -->
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_tune-server._tcp</string>
+	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Tune Remote cherche les serveurs Tune de votre reseau local pour vous eviter de saisir leur adresse IP.</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIApplicationSceneManifest</key>

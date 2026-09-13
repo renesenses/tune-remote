@@ -399,4 +399,54 @@ class AppLKo extends AppL {
 
   @override
   String get bridgeHint => '두 값 모두 서버에서 가져옵니다: 설정 → 원격 접속.';
+
+  @override
+  String get discoveryTitle => '서버에 연결';
+
+  @override
+  String get discoverySection => '네트워크의 서버';
+
+  @override
+  String get discoverySearching => '로컬 네트워크 검색 중…';
+
+  @override
+  String discoveryFoundCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '서버 $n대 발견',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get discoveryNone => 'Tune 서버를 찾을 수 없습니다';
+
+  @override
+  String get discoveryNoneHint => '서버가 켜져 있고 이 기기가 같은 Wi-Fi 네트워크에 있는지 확인하세요.';
+
+  @override
+  String get discoveryLocalNetworkHint =>
+      '로컬 네트워크 접근을 거부하면 iOS는 아무것도 찾지 못하고 알리지도 않습니다. 설정 → Tune Remote → 로컬 네트워크에서 허용한 뒤 다시 검색하세요.';
+
+  @override
+  String get discoveryDenied => '네트워크 검색이 거부됨';
+
+  @override
+  String get discoveryDeniedHintIos =>
+      '설정 → Tune Remote → 로컬 네트워크에서 접근을 허용한 뒤 다시 검색하세요.';
+
+  @override
+  String get discoveryDeniedHintAndroid =>
+      'Android가 네트워크 검색을 거부했습니다. Wi-Fi를 켜고 비행기 모드를 해제한 뒤 다시 검색하세요.';
+
+  @override
+  String get discoveryRetry => '다시 검색';
+
+  @override
+  String get discoveryManualToggle => '주소 직접 입력';
+
+  @override
+  String get discoveryManualIntro =>
+      'VPN 뒤나 다른 서브넷에 있는 서버는 검색되지 않습니다. 주소를 입력하세요.';
 }

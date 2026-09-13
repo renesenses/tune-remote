@@ -189,5 +189,61 @@
   "bridgeHint": "Both values come from your server: Settings → Remote access.",
   "@bridgeHint": {
     "description": "Tells the user where to find both values"
+  },
+  "discoveryTitle": "Connect to a server",
+  "@discoveryTitle": {
+    "description": "Title of the first screen, where the app looks for Tune servers"
+  },
+  "discoverySection": "Servers on the network",
+  "@discoverySection": {
+    "description": "Heading above the list of servers found by mDNS"
+  },
+  "discoverySearching": "Searching the local network…",
+  "@discoverySearching": {
+    "description": "Shown while the mDNS search is running and nothing answered yet"
+  },
+  "discoveryFoundCount": "{n,plural, =1{1 server found}other{{n} servers found}}",
+  "@discoveryFoundCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "discoveryNone": "No Tune server found",
+  "@discoveryNone": {
+    "description": "The search ran long enough and found nothing"
+  },
+  "discoveryNoneHint": "Check that the server is running and that this device is on the same Wi-Fi network.",
+  "@discoveryNoneHint": {
+    "description": "What to check when no server answered"
+  },
+  "discoveryLocalNetworkHint": "If you declined local network access, iOS finds nothing and says nothing. Allow it in Settings → Tune Remote → Local Network, then search again.",
+  "@discoveryLocalNetworkHint": {
+    "description": "Added on iOS, where a denied local-network permission looks exactly like an empty network"
+  },
+  "discoveryDenied": "Network discovery refused",
+  "@discoveryDenied": {
+    "description": "The system refused the discovery outright"
+  },
+  "discoveryDeniedHintIos": "Allow local network access in Settings → Tune Remote → Local Network, then search again.",
+  "@discoveryDeniedHintIos": {
+    "description": "How to grant local network access on iOS"
+  },
+  "discoveryDeniedHintAndroid": "Android refused network discovery. Turn Wi-Fi on, leave airplane mode, then search again.",
+  "@discoveryDeniedHintAndroid": {
+    "description": "What to check when Android refuses the discovery"
+  },
+  "discoveryRetry": "Search again",
+  "@discoveryRetry": {
+    "description": "Button restarting the mDNS search"
+  },
+  "discoveryManualToggle": "Enter an address manually",
+  "@discoveryManualToggle": {
+    "description": "Reveals the host/port fields, the fallback that is never removed"
+  },
+  "discoveryManualIntro": "A server behind a VPN or on another subnet is never discovered: type its address.",
+  "@discoveryManualIntro": {
+    "description": "Why the manual address still exists"
   }
 }

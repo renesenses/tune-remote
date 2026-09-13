@@ -123,5 +123,18 @@
   "bridgePair": "启用远程访问",
   "bridgeUnpair": "返回本地网络",
   "bridgeActive": "远程访问已启用",
-  "bridgeHint": "两个值均来自您的服务器：设置 → 远程访问。"
+  "bridgeHint": "两个值均来自您的服务器：设置 → 远程访问。",
+  "discoveryTitle": "连接服务器",
+  "discoverySection": "网络中的服务器",
+  "discoverySearching": "正在搜索本地网络…",
+  "discoveryFoundCount": "{n,plural, other{找到 {n} 台服务器}}",
+  "discoveryNone": "未找到 Tune 服务器",
+  "discoveryNoneHint": "请确认服务器已启动，并且本设备与其处于同一 Wi-Fi 网络。",
+  "discoveryLocalNetworkHint": "如果你拒绝了本地网络访问，iOS 将什么也找不到且不会提示。请在「设置 → Tune Remote → 本地网络」中允许后重新搜索。",
+  "discoveryDenied": "网络发现被拒绝",
+  "discoveryDeniedHintIos": "请在「设置 → Tune Remote → 本地网络」中允许访问后重新搜索。",
+  "discoveryDeniedHintAndroid": "Android 拒绝了网络发现。请打开 Wi-Fi、退出飞行模式后重新搜索。",
+  "discoveryRetry": "重新搜索",
+  "discoveryManualToggle": "手动输入地址",
+  "discoveryManualIntro": "VPN 后面或位于其他子网的服务器永远不会被发现：请输入其地址。"
 }

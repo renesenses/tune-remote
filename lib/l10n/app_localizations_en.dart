@@ -405,4 +405,56 @@ class AppLEn extends AppL {
   @override
   String get bridgeHint =>
       'Both values come from your server: Settings → Remote access.';
+
+  @override
+  String get discoveryTitle => 'Connect to a server';
+
+  @override
+  String get discoverySection => 'Servers on the network';
+
+  @override
+  String get discoverySearching => 'Searching the local network…';
+
+  @override
+  String discoveryFoundCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n servers found',
+      one: '1 server found',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get discoveryNone => 'No Tune server found';
+
+  @override
+  String get discoveryNoneHint =>
+      'Check that the server is running and that this device is on the same Wi-Fi network.';
+
+  @override
+  String get discoveryLocalNetworkHint =>
+      'If you declined local network access, iOS finds nothing and says nothing. Allow it in Settings → Tune Remote → Local Network, then search again.';
+
+  @override
+  String get discoveryDenied => 'Network discovery refused';
+
+  @override
+  String get discoveryDeniedHintIos =>
+      'Allow local network access in Settings → Tune Remote → Local Network, then search again.';
+
+  @override
+  String get discoveryDeniedHintAndroid =>
+      'Android refused network discovery. Turn Wi-Fi on, leave airplane mode, then search again.';
+
+  @override
+  String get discoveryRetry => 'Search again';
+
+  @override
+  String get discoveryManualToggle => 'Enter an address manually';
+
+  @override
+  String get discoveryManualIntro =>
+      'A server behind a VPN or on another subnet is never discovered: type its address.';
 }

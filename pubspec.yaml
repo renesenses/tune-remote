@@ -41,6 +41,11 @@ dependencies:
   shared_preferences: ^2.5.5
   url_launcher: ^6.3.2
   cached_network_image: ^3.4.1
+
+  # --- mDNS / DNS-SD : decouverte des serveurs Tune sur le reseau local ---
+  # Meme bibliotheque que tune-server-flutter (lib/server/discovery/
+  # tune_discovery.dart) : un seul choix pour les deux applications Flutter.
+  bonsoir: ^5.1.0
   intl: any
 
 dev_dependencies:

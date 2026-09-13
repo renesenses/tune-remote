@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import '../l10n/app_localizations.dart';
 import '../state/app_state.dart';
 import '../widgets/responsive.dart';
+import '../services/server_discovery.dart';
+import '../widgets/server_picker.dart';
 import '../widgets/services_section.dart';
 import 'library_screen.dart';
 import 'metadata_screen.dart';
@@ -34,6 +36,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   late final TextEditingController _bridgeIdCtrl;
   late final TextEditingController _bridgeTokenCtrl;
   bool _synced = false;
+  bool _busy = false;
 
   @override
   void initState() {
@@ -66,6 +69,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
       _portCtrl.text = AppState.defaultPort.toString();
     }
     await context.read<AppState>().setServer(_hostCtrl.text, _portCtrl.text);
+  }
+
+  /// Rejoint un serveur choisi dans la liste du reseau. Les champs manuels
+  /// suivent, pour que l'ecran ne montre pas une adresse et n'en utilise une
+  /// autre.
+  Future<void> _choisirDecouvert(DiscoveredServer server) async {
+    FocusScope.of(context).unfocus();
+    setState(() => _busy = true);
+    try {
+      await context.read<AppState>().connectToDiscovered(server);
+      if (!mounted) return;
+      _hostCtrl.text = server.host;
+      _portCtrl.text = server.port.toString();
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
   }
 
   Future<void> _apparier() async {
@@ -106,6 +125,31 @@ class _SettingsScreenState extends State<SettingsScreen> {
           // ── Server ──────────────────────────────────────────────
           Text(t.server, style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: 8),
+          if (app.serverName.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Text(app.serverName,
+                  style: Theme.of(context).textTheme.bodyMedium),
+            ),
+          // ── Les serveurs vus sur le reseau ──────────────────────
+          //
+          // La recherche passe AVANT la saisie : c'est le cas courant. Les
+          // champs restent en dessous, pour un serveur derriere un VPN ou sur
+          // un autre sous-reseau, que le mDNS ne voit jamais.
+          ServerPicker(
+            onSelected: _choisirDecouvert,
+            busy: _busy || app.loading,
+            currentId: app.serverHost.isEmpty
+                ? null
+                : '${app.serverHost}:${app.serverPort}',
+          ),
+          const SizedBox(height: 16),
+          Text(t.discoveryManualToggle,
+              style: Theme.of(context).textTheme.titleSmall),
+          const SizedBox(height: 6),
+          Text(t.discoveryManualIntro,
+              style: Theme.of(context).textTheme.bodySmall),
+          const SizedBox(height: 10),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

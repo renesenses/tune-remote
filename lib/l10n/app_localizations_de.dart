@@ -406,4 +406,56 @@ class AppLDe extends AppL {
   @override
   String get bridgeHint =>
       'Beide Werte stammen von Ihrem Server: Einstellungen → Fernzugriff.';
+
+  @override
+  String get discoveryTitle => 'Mit einem Server verbinden';
+
+  @override
+  String get discoverySection => 'Server im Netzwerk';
+
+  @override
+  String get discoverySearching => 'Suche im lokalen Netzwerk…';
+
+  @override
+  String discoveryFoundCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n Server gefunden',
+      one: '1 Server gefunden',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get discoveryNone => 'Kein Tune-Server gefunden';
+
+  @override
+  String get discoveryNoneHint =>
+      'Prüfe, ob der Server läuft und dieses Gerät im selben WLAN ist.';
+
+  @override
+  String get discoveryLocalNetworkHint =>
+      'Wenn du den Zugriff auf das lokale Netzwerk abgelehnt hast, findet iOS nichts und meldet nichts. Erlaube ihn unter Einstellungen → Tune Remote → Lokales Netzwerk und suche erneut.';
+
+  @override
+  String get discoveryDenied => 'Netzwerksuche abgelehnt';
+
+  @override
+  String get discoveryDeniedHintIos =>
+      'Erlaube den Zugriff auf das lokale Netzwerk unter Einstellungen → Tune Remote → Lokales Netzwerk und suche erneut.';
+
+  @override
+  String get discoveryDeniedHintAndroid =>
+      'Android hat die Netzwerksuche abgelehnt. Schalte WLAN ein, verlasse den Flugmodus und suche erneut.';
+
+  @override
+  String get discoveryRetry => 'Erneut suchen';
+
+  @override
+  String get discoveryManualToggle => 'Adresse manuell eingeben';
+
+  @override
+  String get discoveryManualIntro =>
+      'Ein Server hinter einem VPN oder in einem anderen Subnetz wird nie gefunden: gib seine Adresse ein.';
 }
