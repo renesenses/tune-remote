@@ -212,25 +212,6 @@ class AppState extends ChangeNotifier {
     await refresh();
   }
 
-  /// Oublie le serveur memorise et revient a l'ecran de decouverte.
-  Future<void> forgetServer() async {
-    _host = '';
-    _serverName = '';
-    _port = defaultPort;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(_kHost);
-    await prefs.remove(_kPort);
-    await prefs.remove(_kServerName);
-    await prefs.remove(_kHostLegacy);
-    _poll?.cancel();
-    _client?.close();
-    _client = null;
-    _connected = false;
-    _zones = [];
-    _devices = [];
-    notifyListeners();
-  }
-
   /// Enregistre — ou efface — l'appairage au relais.
   ///
   /// Les deux valeurs viennent de `POST /api/v1/cloud/bridge/enable`, appele
