@@ -123,5 +123,18 @@
   "bridgePair": "Fernzugriff aktivieren",
   "bridgeUnpair": "Zurück ins Heimnetz",
   "bridgeActive": "Fernzugriff aktiv",
-  "bridgeHint": "Beide Werte stammen von Ihrem Server: Einstellungen → Fernzugriff."
+  "bridgeHint": "Beide Werte stammen von Ihrem Server: Einstellungen → Fernzugriff.",
+  "discoveryTitle": "Mit einem Server verbinden",
+  "discoverySection": "Server im Netzwerk",
+  "discoverySearching": "Suche im lokalen Netzwerk…",
+  "discoveryFoundCount": "{n,plural, =1{1 Server gefunden}other{{n} Server gefunden}}",
+  "discoveryNone": "Kein Tune-Server gefunden",
+  "discoveryNoneHint": "Prüfe, ob der Server läuft und dieses Gerät im selben WLAN ist.",
+  "discoveryLocalNetworkHint": "Wenn du den Zugriff auf das lokale Netzwerk abgelehnt hast, findet iOS nichts und meldet nichts. Erlaube ihn unter Einstellungen → Tune Remote → Lokales Netzwerk und suche erneut.",
+  "discoveryDenied": "Netzwerksuche abgelehnt",
+  "discoveryDeniedHintIos": "Erlaube den Zugriff auf das lokale Netzwerk unter Einstellungen → Tune Remote → Lokales Netzwerk und suche erneut.",
+  "discoveryDeniedHintAndroid": "Android hat die Netzwerksuche abgelehnt. Schalte WLAN ein, verlasse den Flugmodus und suche erneut.",
+  "discoveryRetry": "Erneut suchen",
+  "discoveryManualToggle": "Adresse manuell eingeben",
+  "discoveryManualIntro": "Ein Server hinter einem VPN oder in einem anderen Subnetz wird nie gefunden: gib seine Adresse ein."
 }

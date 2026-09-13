@@ -123,5 +123,18 @@
   "bridgePair": "Activer l'accès distant",
   "bridgeUnpair": "Revenir au réseau local",
   "bridgeActive": "Accès distant actif",
-  "bridgeHint": "Les deux valeurs viennent de votre serveur : Réglages → Accès distant."
+  "bridgeHint": "Les deux valeurs viennent de votre serveur : Réglages → Accès distant.",
+  "discoveryTitle": "Se connecter à un serveur",
+  "discoverySection": "Serveurs sur le réseau",
+  "discoverySearching": "Recherche sur le réseau local…",
+  "discoveryFoundCount": "{n,plural, =1{1 serveur trouvé}other{{n} serveurs trouvés}}",
+  "discoveryNone": "Aucun serveur Tune trouvé",
+  "discoveryNoneHint": "Vérifiez que le serveur est allumé et que cet appareil est sur le même réseau Wi-Fi.",
+  "discoveryLocalNetworkHint": "Si vous avez refusé l'accès au réseau local, iOS ne trouve rien et ne dit rien. Autorisez-le dans Réglages → Tune Remote → Réseau local, puis relancez la recherche.",
+  "discoveryDenied": "Découverte réseau refusée",
+  "discoveryDeniedHintIos": "Autorisez l'accès au réseau local dans Réglages → Tune Remote → Réseau local, puis relancez la recherche.",
+  "discoveryDeniedHintAndroid": "Android a refusé la découverte réseau. Activez le Wi-Fi, quittez le mode avion, puis relancez la recherche.",
+  "discoveryRetry": "Relancer la recherche",
+  "discoveryManualToggle": "Saisir une adresse à la main",
+  "discoveryManualIntro": "Un serveur derrière un VPN ou sur un autre sous-réseau n'est jamais découvert : indiquez son adresse."
 }

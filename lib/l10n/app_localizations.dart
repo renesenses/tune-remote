@@ -854,6 +854,84 @@ abstract class AppL {
   /// In en, this message translates to:
   /// **'Both values come from your server: Settings → Remote access.'**
   String get bridgeHint;
+
+  /// Title of the first screen, where the app looks for Tune servers
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to a server'**
+  String get discoveryTitle;
+
+  /// Heading above the list of servers found by mDNS
+  ///
+  /// In en, this message translates to:
+  /// **'Servers on the network'**
+  String get discoverySection;
+
+  /// Shown while the mDNS search is running and nothing answered yet
+  ///
+  /// In en, this message translates to:
+  /// **'Searching the local network…'**
+  String get discoverySearching;
+
+  /// No description provided for @discoveryFoundCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{n,plural, =1{1 server found}other{{n} servers found}}'**
+  String discoveryFoundCount(int n);
+
+  /// The search ran long enough and found nothing
+  ///
+  /// In en, this message translates to:
+  /// **'No Tune server found'**
+  String get discoveryNone;
+
+  /// What to check when no server answered
+  ///
+  /// In en, this message translates to:
+  /// **'Check that the server is running and that this device is on the same Wi-Fi network.'**
+  String get discoveryNoneHint;
+
+  /// Added on iOS, where a denied local-network permission looks exactly like an empty network
+  ///
+  /// In en, this message translates to:
+  /// **'If you declined local network access, iOS finds nothing and says nothing. Allow it in Settings → Tune Remote → Local Network, then search again.'**
+  String get discoveryLocalNetworkHint;
+
+  /// The system refused the discovery outright
+  ///
+  /// In en, this message translates to:
+  /// **'Network discovery refused'**
+  String get discoveryDenied;
+
+  /// How to grant local network access on iOS
+  ///
+  /// In en, this message translates to:
+  /// **'Allow local network access in Settings → Tune Remote → Local Network, then search again.'**
+  String get discoveryDeniedHintIos;
+
+  /// What to check when Android refuses the discovery
+  ///
+  /// In en, this message translates to:
+  /// **'Android refused network discovery. Turn Wi-Fi on, leave airplane mode, then search again.'**
+  String get discoveryDeniedHintAndroid;
+
+  /// Button restarting the mDNS search
+  ///
+  /// In en, this message translates to:
+  /// **'Search again'**
+  String get discoveryRetry;
+
+  /// Reveals the host/port fields, the fallback that is never removed
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an address manually'**
+  String get discoveryManualToggle;
+
+  /// Why the manual address still exists
+  ///
+  /// In en, this message translates to:
+  /// **'A server behind a VPN or on another subnet is never discovered: type its address.'**
+  String get discoveryManualIntro;
 }
 
 class _AppLDelegate extends LocalizationsDelegate<AppL> {

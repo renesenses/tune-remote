@@ -1,4 +1,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Decouverte des serveurs Tune en mDNS / DNS-SD.
+
+         bonsoir_android passe par NsdManager et prend un WifiManager
+         MulticastLock : les deux permissions ci-dessous sont exactement celles
+         que la bibliotheque declare dans son propre manifeste
+         (bonsoir_android/android/src/main/AndroidManifest.xml). Le fusionneur
+         les ajouterait tout seul ; on les ecrit ici pour qu'elles soient
+         lisibles dans le manifeste de l'application.
+
+         Ni NEARBY_WIFI_DEVICES ni ACCESS_FINE_LOCATION ne sont demandees :
+         NsdManager n'appelle aucune API Wi-Fi qui les exige, et les demander
+         ferait apparaitre une boite de dialogue systeme pour rien.
+
+         INTERNET n'etait declaree que dans les manifestes debug et profile :
+         sans elle, la version release ne peut ni chercher ni joindre le
+         serveur. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
     <application
         android:label="Tune Remote"
         android:name="${applicationName}"

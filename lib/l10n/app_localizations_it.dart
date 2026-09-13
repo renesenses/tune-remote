@@ -405,4 +405,56 @@ class AppLIt extends AppL {
   @override
   String get bridgeHint =>
       'Entrambi i valori provengono dal server: Impostazioni → Accesso remoto.';
+
+  @override
+  String get discoveryTitle => 'Connettersi a un server';
+
+  @override
+  String get discoverySection => 'Server sulla rete';
+
+  @override
+  String get discoverySearching => 'Ricerca sulla rete locale…';
+
+  @override
+  String discoveryFoundCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n server trovati',
+      one: '1 server trovato',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get discoveryNone => 'Nessun server Tune trovato';
+
+  @override
+  String get discoveryNoneHint =>
+      'Verifica che il server sia acceso e che questo dispositivo sia sulla stessa rete Wi-Fi.';
+
+  @override
+  String get discoveryLocalNetworkHint =>
+      'Se hai rifiutato l’accesso alla rete locale, iOS non trova nulla e non lo segnala. Consentilo in Impostazioni → Tune Remote → Rete locale, poi riprova.';
+
+  @override
+  String get discoveryDenied => 'Rilevamento di rete rifiutato';
+
+  @override
+  String get discoveryDeniedHintIos =>
+      'Consenti l’accesso alla rete locale in Impostazioni → Tune Remote → Rete locale, poi riprova.';
+
+  @override
+  String get discoveryDeniedHintAndroid =>
+      'Android ha rifiutato il rilevamento di rete. Attiva il Wi-Fi, esci dalla modalità aereo, poi riprova.';
+
+  @override
+  String get discoveryRetry => 'Cerca di nuovo';
+
+  @override
+  String get discoveryManualToggle => 'Inserire un indirizzo manualmente';
+
+  @override
+  String get discoveryManualIntro =>
+      'Un server dietro una VPN o su un’altra sottorete non viene mai rilevato: digita il suo indirizzo.';
 }

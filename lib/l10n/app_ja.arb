@@ -123,5 +123,18 @@
   "bridgePair": "リモートアクセスを有効にする",
   "bridgeUnpair": "ローカルネットワークに戻る",
   "bridgeActive": "リモートアクセス有効",
-  "bridgeHint": "どちらの値もサーバーから取得します：設定 → リモートアクセス。"
+  "bridgeHint": "どちらの値もサーバーから取得します：設定 → リモートアクセス。",
+  "discoveryTitle": "サーバーに接続",
+  "discoverySection": "ネットワーク上のサーバー",
+  "discoverySearching": "ローカルネットワークを検索中…",
+  "discoveryFoundCount": "{n,plural, other{{n} 台のサーバーが見つかりました}}",
+  "discoveryNone": "Tune サーバーが見つかりません",
+  "discoveryNoneHint": "サーバーが起動していること、この端末が同じ Wi-Fi ネットワークにあることを確認してください。",
+  "discoveryLocalNetworkHint": "ローカルネットワークへのアクセスを拒否した場合、iOS は何も見つけず、何も知らせません。設定 → Tune Remote → ローカルネットワーク で許可してから再検索してください。",
+  "discoveryDenied": "ネットワーク検索が拒否されました",
+  "discoveryDeniedHintIos": "設定 → Tune Remote → ローカルネットワーク でアクセスを許可してから再検索してください。",
+  "discoveryDeniedHintAndroid": "Android がネットワーク検索を拒否しました。Wi-Fi をオンにし、機内モードを解除してから再検索してください。",
+  "discoveryRetry": "再検索",
+  "discoveryManualToggle": "アドレスを手動で入力",
+  "discoveryManualIntro": "VPN の内側や別のサブネットにあるサーバーは検出されません。アドレスを入力してください。"
 }

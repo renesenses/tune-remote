@@ -397,4 +397,52 @@ class AppLZh extends AppL {
 
   @override
   String get bridgeHint => '两个值均来自您的服务器：设置 → 远程访问。';
+
+  @override
+  String get discoveryTitle => '连接服务器';
+
+  @override
+  String get discoverySection => '网络中的服务器';
+
+  @override
+  String get discoverySearching => '正在搜索本地网络…';
+
+  @override
+  String discoveryFoundCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '找到 $n 台服务器',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get discoveryNone => '未找到 Tune 服务器';
+
+  @override
+  String get discoveryNoneHint => '请确认服务器已启动，并且本设备与其处于同一 Wi-Fi 网络。';
+
+  @override
+  String get discoveryLocalNetworkHint =>
+      '如果你拒绝了本地网络访问，iOS 将什么也找不到且不会提示。请在「设置 → Tune Remote → 本地网络」中允许后重新搜索。';
+
+  @override
+  String get discoveryDenied => '网络发现被拒绝';
+
+  @override
+  String get discoveryDeniedHintIos => '请在「设置 → Tune Remote → 本地网络」中允许访问后重新搜索。';
+
+  @override
+  String get discoveryDeniedHintAndroid =>
+      'Android 拒绝了网络发现。请打开 Wi-Fi、退出飞行模式后重新搜索。';
+
+  @override
+  String get discoveryRetry => '重新搜索';
+
+  @override
+  String get discoveryManualToggle => '手动输入地址';
+
+  @override
+  String get discoveryManualIntro => 'VPN 后面或位于其他子网的服务器永远不会被发现：请输入其地址。';
 }

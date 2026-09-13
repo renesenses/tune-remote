@@ -406,4 +406,56 @@ class AppLEs extends AppL {
   @override
   String get bridgeHint =>
       'Ambos valores provienen de su servidor: Ajustes → Acceso remoto.';
+
+  @override
+  String get discoveryTitle => 'Conectar a un servidor';
+
+  @override
+  String get discoverySection => 'Servidores en la red';
+
+  @override
+  String get discoverySearching => 'Buscando en la red local…';
+
+  @override
+  String discoveryFoundCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n servidores encontrados',
+      one: '1 servidor encontrado',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get discoveryNone => 'No se encontró ningún servidor Tune';
+
+  @override
+  String get discoveryNoneHint =>
+      'Comprueba que el servidor esté encendido y que este dispositivo esté en la misma red Wi-Fi.';
+
+  @override
+  String get discoveryLocalNetworkHint =>
+      'Si rechazaste el acceso a la red local, iOS no encuentra nada y no avisa. Actívalo en Ajustes → Tune Remote → Red local y vuelve a buscar.';
+
+  @override
+  String get discoveryDenied => 'Detección de red rechazada';
+
+  @override
+  String get discoveryDeniedHintIos =>
+      'Permite el acceso a la red local en Ajustes → Tune Remote → Red local y vuelve a buscar.';
+
+  @override
+  String get discoveryDeniedHintAndroid =>
+      'Android rechazó la detección de red. Activa el Wi-Fi, sal del modo avión y vuelve a buscar.';
+
+  @override
+  String get discoveryRetry => 'Buscar de nuevo';
+
+  @override
+  String get discoveryManualToggle => 'Introducir una dirección manualmente';
+
+  @override
+  String get discoveryManualIntro =>
+      'Un servidor detrás de una VPN o en otra subred nunca se detecta: escribe su dirección.';
 }

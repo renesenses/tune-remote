@@ -405,4 +405,56 @@ class AppLHu extends AppL {
   @override
   String get bridgeHint =>
       'Mindkét érték a kiszolgálóról származik: Beállítások → Távoli hozzáférés.';
+
+  @override
+  String get discoveryTitle => 'Csatlakozás kiszolgálóhoz';
+
+  @override
+  String get discoverySection => 'Kiszolgálók a hálózaton';
+
+  @override
+  String get discoverySearching => 'Keresés a helyi hálózaton…';
+
+  @override
+  String discoveryFoundCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n kiszolgáló található',
+      one: '1 kiszolgáló található',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get discoveryNone => 'Nem található Tune kiszolgáló';
+
+  @override
+  String get discoveryNoneHint =>
+      'Ellenőrizd, hogy a kiszolgáló fut-e, és hogy ez az eszköz ugyanazon a Wi-Fi hálózaton van-e.';
+
+  @override
+  String get discoveryLocalNetworkHint =>
+      'Ha elutasítottad a helyi hálózat elérését, az iOS nem talál semmit, és nem is jelzi. Engedélyezd a Beállítások → Tune Remote → Helyi hálózat menüben, majd keress újra.';
+
+  @override
+  String get discoveryDenied => 'A hálózati keresés elutasítva';
+
+  @override
+  String get discoveryDeniedHintIos =>
+      'Engedélyezd a helyi hálózat elérését a Beállítások → Tune Remote → Helyi hálózat menüben, majd keress újra.';
+
+  @override
+  String get discoveryDeniedHintAndroid =>
+      'Az Android elutasította a hálózati keresést. Kapcsold be a Wi-Fi-t, lépj ki a repülő üzemmódból, majd keress újra.';
+
+  @override
+  String get discoveryRetry => 'Keresés újra';
+
+  @override
+  String get discoveryManualToggle => 'Cím megadása kézzel';
+
+  @override
+  String get discoveryManualIntro =>
+      'A VPN mögötti vagy másik alhálózaton lévő kiszolgáló soha nem található meg: add meg a címét.';
 }

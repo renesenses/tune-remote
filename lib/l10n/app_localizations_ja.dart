@@ -398,4 +398,55 @@ class AppLJa extends AppL {
 
   @override
   String get bridgeHint => 'どちらの値もサーバーから取得します：設定 → リモートアクセス。';
+
+  @override
+  String get discoveryTitle => 'サーバーに接続';
+
+  @override
+  String get discoverySection => 'ネットワーク上のサーバー';
+
+  @override
+  String get discoverySearching => 'ローカルネットワークを検索中…';
+
+  @override
+  String discoveryFoundCount(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n 台のサーバーが見つかりました',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get discoveryNone => 'Tune サーバーが見つかりません';
+
+  @override
+  String get discoveryNoneHint =>
+      'サーバーが起動していること、この端末が同じ Wi-Fi ネットワークにあることを確認してください。';
+
+  @override
+  String get discoveryLocalNetworkHint =>
+      'ローカルネットワークへのアクセスを拒否した場合、iOS は何も見つけず、何も知らせません。設定 → Tune Remote → ローカルネットワーク で許可してから再検索してください。';
+
+  @override
+  String get discoveryDenied => 'ネットワーク検索が拒否されました';
+
+  @override
+  String get discoveryDeniedHintIos =>
+      '設定 → Tune Remote → ローカルネットワーク でアクセスを許可してから再検索してください。';
+
+  @override
+  String get discoveryDeniedHintAndroid =>
+      'Android がネットワーク検索を拒否しました。Wi-Fi をオンにし、機内モードを解除してから再検索してください。';
+
+  @override
+  String get discoveryRetry => '再検索';
+
+  @override
+  String get discoveryManualToggle => 'アドレスを手動で入力';
+
+  @override
+  String get discoveryManualIntro =>
+      'VPN の内側や別のサブネットにあるサーバーは検出されません。アドレスを入力してください。';
 }

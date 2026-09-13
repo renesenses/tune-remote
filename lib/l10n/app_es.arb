@@ -123,5 +123,18 @@
   "bridgePair": "Activar el acceso remoto",
   "bridgeUnpair": "Volver a la red local",
   "bridgeActive": "Acceso remoto activo",
-  "bridgeHint": "Ambos valores provienen de su servidor: Ajustes → Acceso remoto."
+  "bridgeHint": "Ambos valores provienen de su servidor: Ajustes → Acceso remoto.",
+  "discoveryTitle": "Conectar a un servidor",
+  "discoverySection": "Servidores en la red",
+  "discoverySearching": "Buscando en la red local…",
+  "discoveryFoundCount": "{n,plural, =1{1 servidor encontrado}other{{n} servidores encontrados}}",
+  "discoveryNone": "No se encontró ningún servidor Tune",
+  "discoveryNoneHint": "Comprueba que el servidor esté encendido y que este dispositivo esté en la misma red Wi-Fi.",
+  "discoveryLocalNetworkHint": "Si rechazaste el acceso a la red local, iOS no encuentra nada y no avisa. Actívalo en Ajustes → Tune Remote → Red local y vuelve a buscar.",
+  "discoveryDenied": "Detección de red rechazada",
+  "discoveryDeniedHintIos": "Permite el acceso a la red local en Ajustes → Tune Remote → Red local y vuelve a buscar.",
+  "discoveryDeniedHintAndroid": "Android rechazó la detección de red. Activa el Wi-Fi, sal del modo avión y vuelve a buscar.",
+  "discoveryRetry": "Buscar de nuevo",
+  "discoveryManualToggle": "Introducir una dirección manualmente",
+  "discoveryManualIntro": "Un servidor detrás de una VPN o en otra subred nunca se detecta: escribe su dirección."
 }

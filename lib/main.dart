@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'l10n/app_localizations.dart';
 import 'state/app_state.dart';
 import 'theme/tune_theme.dart';
+import 'screens/connect_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/search_screen.dart';
 import 'screens/smart_radio_screen.dart';
@@ -35,8 +36,30 @@ class TuneRemoteApp extends StatelessWidget {
       locale: locale,
       localizationsDelegates: AppL.localizationsDelegates,
       supportedLocales: AppL.supportedLocales,
-      home: const HomeScaffold(),
+      home: const _RootGate(),
     );
+  }
+}
+
+/// Choisit le premier ecran : la decouverte tant qu'aucun serveur n'est
+/// memorise, l'application entiere ensuite.
+///
+/// L'attente de [AppState.ready] n'est pas cosmetique : `init()` lit les
+/// preferences de facon asynchrone. Sans elle, un lancement avec un serveur
+/// deja memorise afficherait l'ecran de decouverte pendant une image avant de
+/// basculer.
+class _RootGate extends StatelessWidget {
+  const _RootGate();
+
+  @override
+  Widget build(BuildContext context) {
+    final ready = context.select<AppState, bool>((s) => s.ready);
+    final hasServer = context.select<AppState, bool>((s) => s.hasServer);
+    if (!ready) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+    if (!hasServer) return const ConnectScreen();
+    return const HomeScaffold();
   }
 }
 

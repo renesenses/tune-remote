@@ -6,11 +6,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/tune_client.dart';
 import '../api/models.dart';
+import '../services/server_discovery.dart';
 
 class AppState extends ChangeNotifier {
   static const _kHostLegacy = 'host'; // pre host/port split
   static const _kHost = 'server_host';
   static const _kPort = 'server_port';
+  // Nom lisible du dernier serveur choisi dans la liste du reseau. Purement
+  // cosmetique : c'est host/port qui font la connexion.
+  static const _kServerName = 'server_name';
   static const _kZone = 'zone_id';
   // Acces distant par le relais Tune Bridge. Les deux vont ensemble : un
   // identifiant sans jeton ne donnerait que des 401.
@@ -21,6 +25,8 @@ class AppState extends ChangeNotifier {
 
   String _host = '';
   int _port = defaultPort;
+  String _serverName = '';
+  bool _ready = false;
   TuneClient? _client;
   bool _connected = false;
   bool _loading = false;
@@ -44,6 +50,20 @@ class AppState extends ChangeNotifier {
 
   String get serverHost => _host;
   int get serverPort => _port;
+
+  /// Nom lisible du serveur memorise, quand il vient de la decouverte reseau.
+  /// Vide pour une adresse saisie a la main.
+  String get serverName => _serverName;
+
+  /// Vrai une fois [init] termine. Avant cela on ne sait PAS encore s'il y a
+  /// un serveur memorise : afficher l'ecran de decouverte tout de suite le
+  /// ferait clignoter a chaque lancement.
+  bool get ready => _ready;
+
+  /// Vrai quand l'application a de quoi joindre un serveur — adresse locale
+  /// memorisee ou appairage au relais.
+  bool get hasServer => _host.isNotEmpty || viaBridge;
+
 
   /// Combined "host:port" used by the REST client and the auth signatures.
   String get host => _host.isEmpty ? '' : '$_host:$_port';
@@ -106,6 +126,7 @@ class AppState extends ChangeNotifier {
     _locale = (lc != null && lc.isNotEmpty) ? Locale(lc) : null;
     _host = prefs.getString(_kHost) ?? '';
     _port = prefs.getInt(_kPort) ?? defaultPort;
+    _serverName = prefs.getString(_kServerName) ?? '';
     // Migrate the old combined "host:port" pref if present.
     if (_host.isEmpty) {
       final legacy = prefs.getString(_kHostLegacy);
@@ -123,6 +144,7 @@ class AppState extends ChangeNotifier {
       _client = _construireClient();
       await refresh();
     }
+    _ready = true;
     notifyListeners();
   }
 
@@ -159,12 +181,54 @@ class AppState extends ChangeNotifier {
     final parsed = _parse(host, int.tryParse(port.trim()));
     _host = parsed.$1;
     _port = parsed.$2;
+    // Une adresse tapee a la main n'a pas de nom lisible : on efface celui du
+    // serveur decouvert precedent plutot que de laisser un nom qui ment.
+    _serverName = '';
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_kHost, _host);
     await prefs.setInt(_kPort, _port);
+    await prefs.remove(_kServerName);
     _client?.close();
     _client = _construireClient();
     await refresh();
+  }
+
+  /// Memorise et rejoint un serveur trouve sur le reseau.
+  ///
+  /// C'est le meme chemin que [setServer] — host, port, preferences, client —
+  /// avec en plus le nom lisible, pour que l'ecran de reglages puisse dire
+  /// « Salon » plutot que « 192.168.1.41 ». Le prochain lancement se
+  /// reconnecte seul a ce serveur, sans nouvelle recherche.
+  Future<void> connectToDiscovered(DiscoveredServer server) async {
+    _host = server.host;
+    _port = server.port;
+    _serverName = server.name;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_kHost, _host);
+    await prefs.setInt(_kPort, _port);
+    await prefs.setString(_kServerName, _serverName);
+    _client?.close();
+    _client = _construireClient();
+    await refresh();
+  }
+
+  /// Oublie le serveur memorise et revient a l'ecran de decouverte.
+  Future<void> forgetServer() async {
+    _host = '';
+    _serverName = '';
+    _port = defaultPort;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_kHost);
+    await prefs.remove(_kPort);
+    await prefs.remove(_kServerName);
+    await prefs.remove(_kHostLegacy);
+    _poll?.cancel();
+    _client?.close();
+    _client = null;
+    _connected = false;
+    _zones = [];
+    _devices = [];
+    notifyListeners();
   }
 
   /// Enregistre — ou efface — l'appairage au relais.
